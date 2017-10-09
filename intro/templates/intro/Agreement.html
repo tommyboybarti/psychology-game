@@ -1,0 +1,48 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Einverst&auml;ndniserkl&auml;rung
+{% endblock %}
+
+{% block content %}
+<div class="row lead">
+    <div>
+        <p>
+            Dieses Experiment wird im Rahmen der Masterarbeit von Korbinian Lunckenbein, betreut durch
+            Dr. Robert Tobias (Sozialpsychologie, Universitaet in Zuerich) durchgef&uuml;hrt. Ziel des Experimentes ist es zu verstehen, wie Gruppen Probleme angehen und Entscheidungen faellen.
+        </p>
+        <p>
+            Das Experiment dauert 1.5 Stunden und Sie erhalten daf&uuml;r einen Bonus von einer halben Note auf
+            den Leistungsnachweis des Kurses UWW135, sofern Sie dem Experiment vollst&auml;ndig beiwohnen.
+        </p>
+        <p>
+            Die Teilnahme an diesem Experiment ist vollkommen freiwillig. Sollten Sie nicht an diesem Experiment teilnehmen oder dieses
+            abbrechen wollen, so k&ouml;nnen Sie dies jederzeit und ohne Angabe von Gr&uuml;nden tun ohne irgendwelche negativen Konsequenzen
+            bef&uuml;rchten zu m&uuml;ssen.
+        </p>
+        <p>
+            Die im Rahmen des Experiments erhobenen Daten werden anonym ausgewertet und jeglicher R&uuml;ckschluss auf Ihre Person ist dabei ausgeschlossen.
+            Die Resultate von Analysen dieser Daten k&ouml;nnen ver&ouml;ffentlicht werden, Ihr Name wird aber nicht verwendet werden.
+        </p>
+        <p>
+            Sollten Sie noch Fragen zum Experiment haben, k&ouml;nnen Sie sich 
+            via E-Mail (<a href="korbiniankonstantin.lunckenbein@uzh.ch">korbiniankonstantin.lunckenbein@uzh.ch</a>) an mich wenden.
+        </p>
+        <p>
+            Mit dem Fortfahren 'Next' dieser Seite best&auml;tigen Sie, obige Information gelesen und verstanden zu
+            haben und erklaeren sich bereit an dem Experiment teilzunehmen.
+        </p>
+        <p>
+            Nachdem Sie 'Next' gedrueckt haben, warten Sie bitte bis auch Ihre Teammitglieder bereit sind. Daraufhin faengt das Spiel
+            automatisch an, mit einem Zeitlimit von 20 Sekunden je Runde.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+{% endblock %}

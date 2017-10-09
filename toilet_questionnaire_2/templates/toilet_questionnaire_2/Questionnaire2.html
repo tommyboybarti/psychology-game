@@ -1,0 +1,171 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags i18n %}
+
+{% block title %}
+    {% trans "Questionnaire 2" %}
+{% endblock %}
+
+{% block content %}
+<style>
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+        margin-bottom: 20px;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul.questions li.question ul {
+        list-style-type: none;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+    <ul class="questions">
+        <li class="question">
+            <div class="strong">{% trans "What impact did the communication have?" %}</div>
+            <div class="strong">{% trans "I am..." %}</div>
+            <ul>
+                <li>{% trans "Not at all" %} {{form.q2_communication_surprised}} {% trans "Entirely surprised" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_communication_satisfied}}  {% trans "Entirely satisfied" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_communication_upset}}  {% trans "Entirely upset" %}</li>
+            </ul>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Recommendations for action through communication:" %}</div>
+            <div class="strong">{% trans "How did you talk about the cleaning? (Please choose one)" %}</div>
+            <div class="no-strong">{{form.q2_how_did_you_talk_about_the_cleaning}}</div>
+        </li>
+    </ul>
+
+    <p>{% trans "Following questions relate to recomendations for action, which resulted through communication. For instance coordination, agreements, rules (first upper two, presented above), but also vage recommendations (mid upper options). In case you could not use anything from the communication (last two options) you can skip sensless open questions with writing '-'." %}</p>
+    <p>{% trans "Furthermore the concept 'taking advantage of others' will be used, meaning: Breaking rules on purpose to maximize your own goals." %}</p>
+    <ul class="questions">
+        <li class="question">
+            <div class="strong">{% trans "Please describe any kind of recommendations for action. What do you and others have to do, to follow them and what are the rules in case of breaking them?" %}</div>
+            <div class="indent">{{form.q2_recomendation_for_actions}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Aside the recommendations for action, what else did the communication help you with? Positive or negative aspects." %}</div>
+            <div class="indent">{{form.q2_communication_helped_positive_and_negative}}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Your opinion to the recommendation of action?" %}</div>
+            <div class="strong">{% trans "The recommendations are/were..." %}</div>
+            <ul>
+                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_everyone}} {% trans "Given by everyone" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_fair}}  {% trans "Entirely fair" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_max_resources}}  {% trans "Very helpful maximizing everyone's resources" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_opinion_recomendation_understandable}}  {% trans "Entirely understandable about everyone's behavior" %}</li>
+            </ul>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Do you feel any kind of pressure behaving according to the settled rules?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_pressure_behaving_like_settled_rules}} {% trans "Entirely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Is behaving differently disturbing to you?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_would_it_disturb_you_behaving_differently}} {% trans "Entirely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Is there any kind of 'social pressure'?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_is_there_any_kind_of_social_pressure}} {% trans "Entirely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "About your personal attitude of following the recommendations of actions." %}</div>
+            <div class="strong">{% trans "I will follow the recommendations of actions..." %}</div>
+            <ul>
+                <li>{% trans "Not at all" %} {{form.q2_i_will_follwow_the_recommendation_entirely}} {% trans "Precisely" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_i_will_follwow_the_recommendation_maximizing_my_advantage}}  {% trans "To try to maximize my advantage" %}</li>
+            </ul>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Will others follow the recommendations of action? " %}</div>
+            <div class="strong">{% trans "Some or all will follow the recommendations of action..." %}</div>
+            <ul>
+                <li>{% trans "Not at all" %} {{form.q2_others_follow_the_recommendations_entirely}} {% trans "Precisely" %}</li>
+                <li>{% trans "Not at all" %} {{form.q2_others_follow_the_recommendations_try_to_max_their_advantage}}  {% trans "Try to maximizing their advantage" %}</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>{% trans "Perception of group members" %}</h4>
+    <ul class="questions">
+        <li class="question">
+            <div class="strong">{% trans "Because of the communication, how much will everyone cooperate with each other?" %}</div>
+            <div class="strong">{% trans "Group members cooperate..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_how_much_cooperate_because_communication}} {% trans "Entirely together" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "Is there now any 'team spirit' or 'cohesion'?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_team_spirit}} {% trans "Entirely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How important is your own self-presented image of and to yourself?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_importance_of_your_image}} {% trans "Very important" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How important is it to you greating maximum and fair resources to everyone?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_importance_maximum_resources_to_everyone}} {% trans "Very important" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How important is other members trust in you?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_importance_other_members_trust_in_you}} {% trans "Very important" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How important is it to other members (not you) greating maximum and fair resources to everyone?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_importance_maximum_resources_to_everyone_not_you}} {% trans "Very important" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How much trust do you have into other members?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_how_much_trust_do_you_have_into_other_members}} {% trans "Completely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: All in all, how much do you like the other team-members?" %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_how_much_do_you_like_the_other_team_members}} {% trans "I fully trust them" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How good do you understand solving the cleaning problem to great maximum resources?" %}</div>
+            <div class="strong">{% trans "I think, the solution is..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_how_good_you_understand_solving_problem_max_resources}} {% trans "Understood" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "After communication: How good do the other group members understand solving the cleaning problem to great maximum resources?" %}</div>
+            <div class="strong">{% trans "I think, other group members understand the solution..." %}</div>
+            <div class="indent">{% trans "Not at all" %} {{form.q2_afterc_others_understand_solving_problem_great_max_resources}} {% trans "Completely" %}</div>
+        </li>
+        <li class="question">
+            <div class="strong">{% trans "If you play the game again with the same circumstances, which strategy would you follow and why?" %}</div>
+            <div class="indent">{{form.q2_which_strategy_would_you_follow_and_why}}</div>
+        </li>
+    </ul>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}

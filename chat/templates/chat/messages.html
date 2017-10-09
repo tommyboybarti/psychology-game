@@ -1,0 +1,6 @@
+{% for msg in messages %}
+<p>
+    <strong style="color: {{msg.color}}">Player {{msg.player.id_in_group}}: </strong> {{msg.message}}
+</p>
+{% endfor %}
+

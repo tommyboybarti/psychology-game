@@ -1,0 +1,114 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Chat - Player {{player.id_in_group}}
+{% endblock %}
+
+{% block content %}
+    <style>
+        #chat{
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        #message, #chat, #send {
+            width: 100%;
+            max-width: 100%;
+        }
+    </style>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div  id="chat" class="form-control"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <input type="text" placeholder="Your Message" id="message" class="form-control input-medium search-query">
+        </div>
+        <div class="col-md-1">
+            <button id="send" class="btn btn-info btn-mini" disabled>
+                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+<hr>
+
+    <div class="row text-danger text-center lead">
+        When you click <kbd class="text-info">Next</kbd> the Chat is over
+    </div>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        var $divChat = $("div#chat");
+        var $inputMessage = $("input#message");
+        var $buttonSend = $("button#send");
+        var lastMessage = null;
+
+
+        $inputMessage.keyup(function(evt){
+            var isEmpty = !$inputMessage.val();
+            if(isEmpty){
+                $buttonSend.prop("disabled", true);
+            } else {
+                $buttonSend.prop("disabled", false);
+            }
+        });
+
+        $buttonSend.click(function(){
+            // disable NOW!
+            $buttonSend.prop("disabled", true);
+            $inputMessage.prop("disabled", true);
+
+            // retrieve the message and clea
+            var message = $inputMessage.val();
+
+            var url = "{% url 'ajax_chat:send_message' %}";
+            var tokken = '{{ csrf_token }}';
+            var group = {{ player.group.id }};
+            var player = {{ player.id }};
+            var msgData = {
+                group: group, player: player,
+                message: message, csrfmiddlewaretoken: tokken};
+            if(!!message)
+                $.post(url, msgData).error(function(){
+                    $inputMessage.prop("disabled", false);
+                    $buttonSend.prop("disabled", false);
+                }).success(function(){
+                    $inputMessage.val("");
+                    $inputMessage.prop("disabled", false);
+                });
+            return false;
+        });
+
+        function retrieveMessages(){
+            var url = "{% url 'ajax_chat:retrieve_messages' %}";
+            var group = {{ player.group.id }};
+            var rtrvData = {group: group, last_message: lastMessage};
+            $.get(url, rtrvData, function(data){
+                if(data.hasMessages){
+                    lastMessage = data.lastMessage;
+                    $divChat.append(data.messagesHTML);
+                    $divChat[0].scrollTop = $divChat[0].scrollHeight;
+                }
+            });
+        }
+        retrieveMessages();
+        setInterval(retrieveMessages, 2000);
+
+    });
+</script>
+{% endblock %}
+

@@ -1,0 +1,59 @@
+<h2>Hintergrund <small>Toilettenspiel</small></h2>
+<p>Das Problem durch Beitr&auml;ge eine Ressource
+   funktionst&uuml;chtig / produktiv zu halten ist relevanter als Probleme der Ressourcennutzung selber</p>
+<p>Kaum jemand kennt sich noch mit der direkten Nutzung
+   nat&uuml;rlicher Ressourcen aus. Problem der Toilettenverschmutzung ist leichter vorstellbar.</p>
+<p>Bsp.: In urbanen Slums stehen den meisten Leuten Latrinen
+   zur Verf&uuml;gung, sie sind aber in so schlechtem Zustand, dass oft offen def&auml;kiert wird.</p>
+
+
+<h2>Aufgabe</h2>
+<p>Sie entscheiden f&uuml;r einige Wochen (12 Runden) wo Sie def&auml;kieren und wie Sie die Toilette sauber halten.</p>
+<p>Ihr Verhalten und das der anderen bestimmt die
+   Gesundheit und das Ihr Einkommen; das Sauberhalten kostet aber auch Ressourcen. (Zeit / Geld)&nbsp;</p>
+<p>Ziel ist es, m&ouml;glichst viele Ressourcen anzusammeln</p>
+
+<h2>Systembeschreibung&nbsp;</h2>
+<h3>Verhaltensoptionen:</h3>
+<p>Toilette benutzen oder nicht: Nicht-Benutzung reduziert Gesundheit aller um 1;
+   Benutzung verschmutzt Toilette (Toilettenzustand &ndash;1).</p>
+<p>Wenn Toilette benutzt wird &rarr; kleines Putzen oder nicht: Kleines Putzen verlangsamt Verschmutzung der Toilette
+   (Toilettenzustand &ndash;0.5 statt &ndash;1)
+   kostet aber Ressourcen (&ndash;1).</p>
+<p>Unabh&auml;ngig davon: Sich an Grossputz beteiligen: Macht Toilette sauberer,
+   ist aber teuer / zeitaufw&auml;ndig (siehe sp&auml;ter).</p>
+
+<h3>Toiletten-Zustand:</h3>
+<p>Reicht von 0 = total verschmutzt bis 12 = vollkommen sauber.
+   Startwert = 4 (die Toilette ist kritisch verschmutzt)</p>
+<p>Verschlechtert sich durch jede Benutzung, allerdings nur halb so schnell mit
+   kleinem Putzen (Toilettenzustand &ndash;1 bzw. &ndash;0.5).</p>
+<p>Verbessert sich durch Grossputz: Verbesserung um so gr&ouml;sser, je verschmutzter und je mehr
+   Ressourcen investiert werden (siehe sp&auml;ter).</p>
+
+<h3>Gesundheitszustand:</h3>
+<p>Reicht von 0 = tot bis 12 = vollkommen gesund; Startet mit 12 und steigt in jeder Runde um 1 wenn &lt; 12.</p>
+<p>Wird reduziert um 1 durch jede Person die Toilette nicht benutzt.</p>
+<p>Wird reduziert wenn eine sehr verdreckte Toilette benutzt wird:
+   Toilettenzustand 0 bis 4 --&gt; Gesundheit &ndash;2; TS 4 bis 8 --&gt; Gesundheit &ndash;1</p>
+
+<h3>Ressourcenentwicklung:</h3>
+<p>Startet bei 9, kann bis 0 absinken und unendlich steigen.</p>
+<p>Ressourcen steigen jede Runde, aber reduziert durch tiefe
+   Gesundheit. Gesundheit 0 bis 4 --&gt; Ressourcen +0; G 4 bis 8 --&gt; R +1 ; G 8 bis 12 --&gt; R +2</p>
+<p>Reduziert sich um 1 durch kleines Putzen bei Toilettenbenutzen.</p>
+<p>Reduziert sich stark, wenn Grossputz gemacht wird.</p>
+
+<h3>Grossputz:</h3>
+<p>F&uuml;r einen Grossputz muss Zeit freigehalten und Material bereitgehalten werden bzw. jemand f&uuml;rs
+   Putzen bezahlt werden, unabh&auml;ngig davon, wie verschmutzt die Toilette ist.
+   Daher kostet das Putzen immer gleich viel (12 Einheiten).</p>
+<p>Die Kosten verteilen sich gleichm&auml;ssig auf alle Personen, welche sich in einer Runde am
+   Grossputz beteiligen. Machen z.B. zwei mit, so bezahlen diese jeweils 6 Einheiten unabh&auml;ngig
+   davon, &uuml;ber wie viele Ressourcen diese verf&uuml;gen. Beteiligen sich Personen am Grossputz, welche nicht &uuml;ber gen&uuml;gend Ressourcen verf&uuml;gen, wird die
+   Toilette nicht ganz sauber.</p>
+<p>Fazit: Die drei Variablen 'Toilettensauberkeit', 'Ressourcen' und Ihre 'Gesundheit' haengen voneinander ab.
+   Eine saubere Toilette wirkt sich auf die Gesundheit aus.
+   Gesund erhalten Sie mehr Ressourcen.
+   Durch die Ressourcen bekommen Sie eine saubere Toilette</p>
+<p>(Die Frageboegen (spaeter) sind auf Englisch, können aber natuerlich auf Deutsch ausgefuellt werden)</p>

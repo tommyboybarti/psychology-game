@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Problemstellung
+{% endblock %}
+
+{% block content %}
+<div class="row">
+{% if players_per_group == 3 %}
+    {% include "intro/instructions/for3.html" %}
+{% elif players_per_group == 4 %}
+    {% include "intro/instructions/for4.html" %}
+{% elif players_per_group == 5 %}
+    {% include "intro/instructions/for5.html" %}
+{% endif %}
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+{% endblock %}
