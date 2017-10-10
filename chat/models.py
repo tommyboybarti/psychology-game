@@ -25,7 +25,7 @@ class Constants(BaseConstants):
     players_per_group = 10
     num_rounds = 1
 
-    available_group_sizes = (3, 4, 5)
+    available_group_sizes = 20
     treatment_small_talk = "small_talk"
     treatment_normal_talk = "normal_talk"
     treatments = (treatment_small_talk, treatment_normal_talk)
