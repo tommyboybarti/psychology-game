@@ -215,9 +215,8 @@ ROOM_DEFAULTS = {}
 
 ROOMS = [
     {
-        'name': 'Dindis Klasse',
-        'display_name': 'Chat Room 01',
-
+        'name': 'custom_chatroom',
+        'display_name': 'Klasse XX',
     },
 ]
 
