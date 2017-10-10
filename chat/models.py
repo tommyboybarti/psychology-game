@@ -22,10 +22,10 @@ doc = """
 
 class Constants(BaseConstants):
     name_in_url = 'chat'
-    players_per_group = 10
+    players_per_group = None
     num_rounds = 1
 
-    available_group_sizes = 20
+    available_group_sizes = (3, 4, 5)
     treatment_small_talk = "small_talk"
     treatment_normal_talk = "normal_talk"
     treatments = (treatment_small_talk, treatment_normal_talk)
