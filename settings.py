@@ -218,7 +218,7 @@ ROOMS = [
         'name': 'Dindis Klasse',
         'display_name': 'Chat Room 01',
 
-    }
+    },
 ]
 
 # anything you put after the below line will override
