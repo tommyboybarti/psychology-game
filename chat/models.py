@@ -26,9 +26,16 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     available_group_sizes = (3, 4, 5)
-    treatment_small_talk = "small_talk"
-    treatment_normal_talk = "normal_talk"
-    treatments = (treatment_small_talk, treatment_normal_talk)
+    # treatment_small_talk = "small_talk"
+    # treatment_normal_talk = "normal_talk"
+    # treatments = (treatment_small_talk, treatment_normal_talk)
+
+    treatment_placebo = "placebo_group"
+    treatment_positive = "positive_group"
+    treatment_positive_confidant = "confidant_positive"
+    treatment_negative_confidant = "confidant_negative"
+
+    treatments = (treatment_placebo, treatment_positive, treatment_positive_confidant, treatment_negative_confidant)
 
 
 
