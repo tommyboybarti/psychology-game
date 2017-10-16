@@ -28,8 +28,7 @@ MESSAGES_TPL = loader.get_template("chat/messages.html")
 # =============================================================================
 
 class SmallTalk(Page):
-
-    pass
+    template_name = 'chat/placebo_instructions.html'
     # def is_displayed(self):
     #     return self.player.group.treatment  == Constants.treatment_small_talk
 
