@@ -130,8 +130,8 @@ SESSION_CONFIGS = [
     {
         'name': 'fullgame5',
         'display_name': "Full Game (Groups of 5)",
-        'num_demo_participants': 10,
-        'players_per_group': 2,
+        'num_demo_participants': 12,
+        'players_per_group': 3,
         'app_sequence': [
             'intro', 'toilet', 'toilet_questionnaire_1',
             'chat', 'toilet_questionnaire_2',
