@@ -68,7 +68,7 @@ class Subsession(BaseSubsession):
 
             elif group.treatment == Constants.treatment_negative_confidant:
                 group.get_player_by_id(3).participant.vars['is_negative_confidant'] = True
-                
+
 
 class Group(BaseGroup):
 
