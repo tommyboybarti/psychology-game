@@ -26,9 +26,6 @@ class Constants(BaseConstants):
     num_rounds = 1
 
     available_group_sizes = (3, 4, 5)
-    # treatment_small_talk = "small_talk"
-    # treatment_normal_talk = "normal_talk"
-    # treatments = (treatment_small_talk, treatment_normal_talk)
 
     treatment_placebo = "placebo_group"
     treatment_positive = "positive_group"
@@ -36,7 +33,6 @@ class Constants(BaseConstants):
     treatment_negative_confidant = "confidant_negative"
 
     treatments = (treatment_placebo, treatment_positive, treatment_positive_confidant, treatment_negative_confidant)
-
 
 
 class Subsession(BaseSubsession):
@@ -66,16 +62,13 @@ class Subsession(BaseSubsession):
         treatments = itertools.cycle(Constants.treatments)
         for group in self.get_groups():
             group.treatment = next(treatments)
+
             if group.treatment == Constants.treatment_positive_confidant:
                 group.get_player_by_id(3).participant.vars['is_positive_confidant'] = True
 
-
-
-
-
-
-
-
+            elif group.treatment == Constants.treatment_negative_confidant:
+                group.get_player_by_id(3).participant.vars['is_negative_confidant'] = True
+                
 
 class Group(BaseGroup):
 

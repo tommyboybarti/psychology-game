@@ -30,12 +30,13 @@ MESSAGES_TPL = loader.get_template("chat/messages.html")
 class SmallTalk(Page):
     def get_template_names(self):
         if self.player.participant.vars.get('is_positive_confidant', False):
-            return 'chat/positive_instructions.html'
+            return 'chat/positive_confidant.html'
+        elif self.player.participant.vars.get('is_negative_confidant', False):
+            return 'chat/negative_confidant.html'
+        elif self.group.treatment == Constants.treatment_positive:
+            return 'chat/positive_group.html'
 
-        return 'chat/placebo_instructions.html'
-
-    # def is_displayed(self):
-    #     return self.player.group.treatment  == Constants.treatment_small_talk
+        return 'chat/placebo.html'
 
 
 class ChatWaitPage(WaitPage):
