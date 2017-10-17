@@ -62,10 +62,19 @@ class Subsession(BaseSubsession):
         groups_mtx = self.chunk_it(players, groups_n)
         self.set_group_matrix(groups_mtx)
 
-        # set treatment
+        # set treatments and confidants
         treatments = itertools.cycle(Constants.treatments)
         for group in self.get_groups():
             group.treatment = next(treatments)
+            if group.treatment == Constants.treatment_positive_confidant:
+                group.get_player_by_id(3).participant.vars['is_positive_confident'] = True
+
+
+
+
+
+
+
 
 
 class Group(BaseGroup):
