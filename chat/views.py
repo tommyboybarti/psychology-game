@@ -29,7 +29,7 @@ MESSAGES_TPL = loader.get_template("chat/messages.html")
 
 class SmallTalk(Page):
     def get_template_names(self):
-        if self.player.participant.vars.get(['is_positive_confidant'], False):
+        if self.player.participant.vars.get('is_positive_confidant', False):
             return 'chat/positive_instructions.html'
 
         return 'chat/placebo_instructions.html'
