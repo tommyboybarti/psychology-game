@@ -67,7 +67,7 @@ class Subsession(BaseSubsession):
         for group in self.get_groups():
             group.treatment = next(treatments)
             if group.treatment == Constants.treatment_positive_confidant:
-                group.get_player_by_id(3).participant.vars['is_positive_confidant'] = 'john'
+                group.get_player_by_id(3).participant.vars['is_positive_confidant'] = True
 
 
 
