@@ -35,17 +35,19 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    def get_participants(self):
+        builder_list = []
+        for player in self.get_others_in_group():
+            builder_list.append(player.participant.id_in_session)
+
+        return builder_list
+
     q2_communication_surprised = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_communication_satisfied = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_communication_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_how_did_you_talk_about_the_cleaning = models.CharField(
+    q2_best_player = models.CharField(
         max_length=255,  widget=widgets.RadioSelect(),
-        choices=["The group created strict rules when to clean.",
-                 "More or less rules when to clean.",
-                 "Several cleaning possibilities were mentioned without staying with one.",
-                 "Without cleaning possibilites given by the group members, I found myself easier doing it next time better.",
-                 "Cleaning behaviors were mentioned without helping me judge how to improve next time.",
-                 "The issure 'Toilet cleaning' or behavior in game wasn't mentioned at all."])
+        choices=get_participants())
 
     q2_recomendation_for_actions = models.TextField()
     q2_communication_helped_positive_and_negative = models.TextField()
