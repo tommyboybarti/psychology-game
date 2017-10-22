@@ -175,8 +175,8 @@ if DEBUG:
         {
             'name': 'chat',
             'display_name': "Chat (Group of 5)",
-            'num_demo_participants': 20,
-            'players_per_group': 5,
+            'num_demo_participants': 3,
+            'players_per_group': 3,
             'app_sequence': [
                 'chat',
             ],
