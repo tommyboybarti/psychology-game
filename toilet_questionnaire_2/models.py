@@ -35,6 +35,11 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    def __init__(self):
+        self.q2_best_player = models.CharField(
+            max_length=255, widget=widgets.RadioSelect(),
+            choices = self.get_choices(self.get_participants()))
+
     def get_participants(self):
         builder_list = []
         for player in self.get_others_in_group():
@@ -65,4 +70,4 @@ class Player(BasePlayer):
 
     q2_best_player = models.CharField(
         max_length=255,  widget=widgets.RadioSelect(),
-        choices = get_choices(get_participants()))
+        choices = [])
