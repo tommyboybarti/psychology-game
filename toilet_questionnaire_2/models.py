@@ -42,42 +42,27 @@ class Player(BasePlayer):
 
         return builder_list
 
+    def get_choices(self, participants):
+        choices = []
+        choices.append(self)
+        for participant in participants:
+            choices.append(participant)
+
+        return choices
+
     q2_communication_surprised = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_communication_satisfied = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q2_communication_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_communication_fair_discussion = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_fear_cirticism = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_to_be_right = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
+    q2_communication_give_opinion = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_others_opinions = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_whine = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q2_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+
     q2_best_player = models.CharField(
         max_length=255,  widget=widgets.RadioSelect(),
-        choices=get_participants())
-
-    q2_recomendation_for_actions = models.TextField()
-    q2_communication_helped_positive_and_negative = models.TextField()
-
-    q2_opinion_recomendation_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_opinion_recomendation_fair = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_opinion_recomendation_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_opinion_recomendation_understandable = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_pressure_behaving_like_settled_rules = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_would_it_disturb_you_behaving_differently = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_is_there_any_kind_of_social_pressure = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_i_will_follwow_the_recommendation_entirely = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_i_will_follwow_the_recommendation_maximizing_my_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_others_follow_the_recommendations_entirely = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_others_follow_the_recommendations_try_to_max_their_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q2_how_much_cooperate_because_communication = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_team_spirit = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_importance_of_your_image = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_importance_maximum_resources_to_everyone = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_importance_other_members_trust_in_you = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_importance_maximum_resources_to_everyone_not_you = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_how_much_trust_do_you_have_into_other_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_how_much_do_you_like_the_other_team_members = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_how_good_you_understand_solving_problem_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_afterc_others_understand_solving_problem_great_max_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q2_which_strategy_would_you_follow_and_why = models.TextField()
-
+        choices = get_choices(get_participants()))
