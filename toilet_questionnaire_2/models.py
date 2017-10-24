@@ -48,7 +48,7 @@ class Player(BasePlayer):
 
     q2_communication_fair_discussion = models.PositiveIntegerField(min=1, max=5,
                                                                    widget=widgets.SliderInput(show_value=False))
-    q2_communication_fear_cirticism = models.PositiveIntegerField(min=1, max=5,
+    q2_communication_fear_criticism = models.PositiveIntegerField(min=1, max=5,
                                                                   widget=widgets.SliderInput(show_value=False))
     q2_communication_to_be_right = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
 
