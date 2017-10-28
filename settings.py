@@ -192,7 +192,8 @@ if DEBUG:
         {
             'name': 'questionnaire_2',
             'display_name': "Questionnaire 2",
-            'num_demo_participants': 1,
+            'num_demo_participants': 12,
+            'players_per_group': 3,
             'app_sequence': [
                 'toilet_questionnaire_2',
             ],

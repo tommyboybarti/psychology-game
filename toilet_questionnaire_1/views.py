@@ -26,7 +26,6 @@ class Questionnaire1(Page):
         'q1_how_good_do_the_other_group_members_understand_solving',
 
         'q1_how_to_improve_the_groups_behavior_to_maximize_resources',
-        'q1_which_strategy_would_you_follow_and_why',
         'q1_if_communicate_what_would_you_say_and_why']
 
 
