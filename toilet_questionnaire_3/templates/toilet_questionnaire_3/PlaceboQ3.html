@@ -1,0 +1,303 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags i18n %}
+
+{% block title %}
+Fragenbogen 3
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{% static 'global/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js' %}"></script>
+<script>
+    //~ $(document).ready(function(){
+        $("#id_q3_birthday").attr("placeholder", "YYYY-MM-DD");
+        $("#id_q3_birthday").prop("readonly", true);
+
+        $("#id_q3_birthday").datepicker({format: "yyyy-mm-dd", autoclose: true});
+
+
+        $("#id_q3_birthday").parent().find("span.btn").click(function(){
+            $("#id_q3_birthday").datepicker("show")
+        });
+
+
+
+    //~ });
+
+
+
+</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'global/bootstrap-datepicker-master/css/bootstrap-datepicker3.min.css' %}">
+<style>
+    #id_q3_birthday {
+        background-color: #ffffff;
+        cursor: pointer;
+
+    }
+
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+        margin-bottom: 40px;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul.questions div.small-tarea textarea {
+        height: 50px;
+    }
+
+    ul {
+     list-style-type: none;
+    }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <br>
+    <div class="col-md-12">
+        <ul class="questions">
+            <li class="question">
+                <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im zweiten Spiel
+                    zusammenarbeiteten?
+                </div>
+                <div>Die Gruppenmitglieder arbeiten…</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_second_game_teamwork}} vollkommen zusammen</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern empfinden Sie eine Art 'Teamgeist' in der Gruppe?</div>
+                <div>Ich empfinde...</div>
+                <ul>
+                    <li>überhaupt kein {{form.q3_second_game_teamspirit}} einen starken Teamgeist</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Wie dienlich waren die aus der Kommunikation abgeleiteten Handlungsempfehlungen um
+                    die Ressourcen aller zu maximieren?
+                </div>
+                <div>Die Handlungsempfehlungen waren...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_communication_inputs_maxresources_how_useful}} vollkommen dienlich.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">In wie weit haben Sie sich im zweiten Spiel an die Handlungsempfehlungen gehalten?
+                </div>
+                <div>Ich hab die Handlungsempfehlungen...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_followed_communication_inputs}} vollkommen befolgt.</li>
+                    <li>überhaupt nicht {{form.q3_took_advantage_communication_inputs}} maximal ausgenutzt.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">In wie weit haben sich die anderen Gruppenmitglieder an die Handlungsempfehlungen
+                    gehalten?
+                </div>
+                <div>Die Mehrheit / die Hälfte der anderen Gruppenmitglieder haben die Handlungsempfehlungen...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_majority_followed_communication_inputs}} vollkommen befolgt.</li>
+                    <li>überhaupt nicht {{form.q3_majority_took_advantage_communication_inputs}} maximal ausgenutzt.
+                    </li>
+                </ul>
+                <br>
+                <div>Eine Minderheit / die andere Hälfte der anderen Gruppenmitglieder haben die
+                    Handlungsempfehlungen...
+                </div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_minority_followed_communication_inputs}} vollkommen befolgt.</li>
+                    <li>überhaupt nicht {{form.q3_minority_took_advantage_communication_inputs}} maximal ausgenutzt.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Was denken Sie, inwiefern hätten die Handlungsempfehlungen die Ressourcen aller
+                    Spieler maximiert wenn sich alle daran gehalten hätten?
+                </div>
+                <div>Die Ressourcen aller Spieler hätten sich...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_how_max_resources_communication_inputs_if_followed}} äusserst stark
+                        verbessert.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Nach dem zweiten Spiel, wie sehr mögen Sie jetzt die Gruppe bzw. die anderen
+                    Mitspieler?
+                </div>
+                <div>Ich mag die anderen...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_after_second_round_like_others}} äusserst gern.</li>
+                </ul>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Erläutern Sie in ein paar Sätzen Ihre Eindrücke vom zweiten Spiel. Was war anders
+                    als beim ersten und inwiefern ist das auf die Kommunikation zurückzuführen? Was von dem in der
+                    Kommunikation Besprochenen funktionierte und was nicht? Warum haben Sie sich an die
+                    Handlungsempfehlungen gehalten oder warum nicht? Etc.
+                </div>
+                <div class="indent">{{form.q3_second_round_impressions}}</div>
+            </li>
+
+
+            <br>
+            <h4>Angaben zu Ihrer Person</h4>
+            <br>
+            <ul class="questions">
+                <li class="question">
+                    <div class="strong">Geschlecht</div>
+                    <div class="indent">{{form.q3_gender}}</div>
+                </li>
+                <li class="question">
+                    <div class="strong">Geburtstag:</div>
+                    <div class="indent input-group">
+                        {{form.q3_birthday}}
+                        <span class="btn input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                    </div>
+                </li>
+                <li class="question">
+                    <div class="strong">Hauptfach:</div>
+                    <div class="indent small-tarea">{{form.q3_main_subject_in_university}}</div>
+                </li>
+                <li class="question">
+                    <div class="strong">Haben Sie schon einmal in einem Problemlöse-/Kooperations-Experiment wie diesem
+                        teilgenommen?
+                    </div>
+                    <br>
+                    <div class="indent">{{form.q3_already_take_part_in_a_problem_solving}}</div>
+                    <br>
+                    <div class="strong">Falls Ja, wieviele Male und das letzte Mal vor wievielen Monaten?</div>
+                    <div class="indent small-tarea">{{form.q3_already_took_part_x_times_for_x_months}}</div>
+                </li>
+            </ul>
+
+            <br>
+            <h4>Evaluation des Experiments</h4>
+            <br>
+            <ul class="questions">
+                <li class="question">
+                    <div class="strong">Wie interessant war das Experiment für Sie?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_experiment_itself_was_interessting}} äusserst interessant.</li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wie sehr bemühten Sie sich um möglichst gute Resultate?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_were_you_personally_engaged_achieving_good_results}} äusserst
+                            bemüht.
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wie schwierig war es, das Problem zu verstehen und zu lösen?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_dificult_understanding_and_solving_the_problem}} äusserst
+                            schwierig.
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wie klar waren die Anweisungen des Experiments, damit Sie wussten, was Sie im
+                        Rahmen des Experiments zu tun haben?
+                    </div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_was_it_obvious_what_to_do}}  äusserst klar.</li>
+                    </ul>
+                </li>
+
+
+                <li class="question">
+                    <div class="strong">Gab es in den Fragebögen Fragen oder Antwortoptionen, welche unklar waren oder
+                        wo Sie unsicher waren, was wir wissen wollen? Wenn ja, wie viele solcher Fragen / Antworten gab
+                        es ungefähr (wenn keine, tragen Sie '0' ein)?
+                    </div>
+                    <div class="indent">{{form.q3_count_unclear_questions}}</div>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Erinnern Sie sich noch an Beispiele solcher unklaren Fragen oder
+                        Antwortoptionen? Wenn ja, beschreiben Sie kurz, welche diese waren.
+                    </div>
+                    <div class="indent">{{form.q3_unclear_questions_description}}</div>
+                </li>
+
+
+                <li class="question">
+                    <div class="strong">Traten während den Spielen oder der Kommunikation technische Probleme auf?</div>
+                    <br>
+                    <ul>
+                        <li>{{form.q3_technical_issues}}</li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wenn ja, eschreiben Sie kurz die aufgetretenen Probleme:</div>
+                    <div class="indent">{{form.q3_technical_issues_details}}</div>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Was denken Sie, welche Fragen oder Hypothesen in diesem Experiment untersucht
+                        werden?
+                    </div>
+                    <div class="indent">{{form.q3_opinion_about_questions_and_hypotheses}}</div>
+                </li>
+            </ul>
+
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}

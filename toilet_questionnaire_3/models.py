@@ -35,36 +35,33 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    q3_second_game_surprised = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_second_game_satisfied = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_second_game_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q3_help_each_other_in_the_second_game = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_team_spirit = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_recommendations_of_actions_to_maximize_everyones_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q3_i_follow_recommendations_of_action_followed = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_i_follow_recommendations_of_action_my_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q3_others_follow_recommendations_of_action_followed = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_others_follow_recommendations_of_action_their_advantage = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q3_yopinion_if_they_followed_would_everyone_max_his_resources = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-
-    q3_second_game_different_and_is_it_because_of_the_communication = models.TextField()
-    q3_the_best_strategy_to_optimize_everyones_resources = models.TextField()
-
-    q3_gender = models.CharField(choices=["Male", "Female"], widget=widgets.RadioSelectHorizontal())
+    q3_second_game_teamwork = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_second_game_teamspirit = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_communication_inputs_maxresources_how_useful = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_followed_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_took_advantage_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_majority_followed_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_majority_took_advantage_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_minority_followed_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_minority_took_advantage_communication_inputs = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_how_max_resources_communication_inputs_if_followed = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_after_second_round_like_others = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q3_second_round_impressions = models.TextField()
+    q3_gender = models.CharField(choices=["M", "F"], widget=widgets.RadioSelectHorizontal())
     q3_birthday = models.DateField(widget=widgets.Input())
-
     q3_main_subject_in_university = models.TextField()
-    q3_already_take_part_in_a_problem_solving = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-
+    q3_already_take_part_in_a_problem_solving = models.CharField(max_length=255, widget=widgets.RadioSelect(),choices=['Ja', 'Nein'])
+    q3_already_took_part_x_times_for_x_months = models.TextField()
     q3_experiment_itself_was_interessting = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q3_were_you_personally_engaged_achieving_good_results = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q3_dificult_understanding_and_solving_the_problem = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
     q3_was_it_obvious_what_to_do = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
-    q3_short_feedback = models.TextField()
+    q3_count_unclear_questions = models.TextField()
+    q3_unclear_questions_description = models.TextField()
+    q3_technical_issues = models.CharField(max_length=255, widget=widgets.RadioSelect(),choices=['Ja', 'Nein'])
+    q3_technical_issues_details = models.TextField()
+    q3_opinion_about_questions_and_hypotheses = models.TextField()
+
 
 
 
