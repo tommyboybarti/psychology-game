@@ -39,7 +39,11 @@ class PlaceboQ2(Page):
 
         choices = []
         for player in self.group.get_players():
-            choices.append('Spieler ' + str(player.id_in_group))
+
+            if player.id_in_group == self.player.id_in_group:
+                choices.append('Ich')
+            else:
+                choices.append('Spieler ' + str(player.id_in_group))
 
         choices.append('Niemand (alle trugen gleich viel bei)')
 
