@@ -2,7 +2,7 @@
 {% load staticfiles otree_tags i18n %}
 
 {% block title %}
-    {% trans "Questionnaire 3" %}
+Fragenbogen 3 für Konfident
 {% endblock %}
 
 
@@ -10,19 +10,24 @@
 <script src="{% static 'global/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js' %}"></script>
 <script>
     //~ $(document).ready(function(){
-        $("#id_q3_birthday").attr("placeholder", "YYYY-MM-DD");
-        $("#id_q3_birthday").prop("readonly", true);
+        $("#id_q3_confidant_birthday").attr("placeholder", "YYYY-MM-DD");
+        $("#id_q3_confidant_birthday").prop("readonly", true);
 
-        $("#id_q3_birthday").datepicker({format: "yyyy-mm-dd", autoclose: true});
+        $("#id_q3_confidant_birthday").datepicker({format: "yyyy-mm-dd", autoclose: true});
 
 
-        $("#id_q3_birthday").parent().find("span.btn").click(function(){
-            $("#id_q3_birthday").datepicker("show")
+        $("#id_q3_confidant_birthday").parent().find("span.btn").click(function(){
+            $("#id_q3_confidant_birthday").datepicker("show")
         });
 
 
 
     //~ });
+
+
+
+
+
 </script>
 {% endblock %}
 
@@ -49,7 +54,7 @@
     }
 
     ul.questions li.question {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
 
     ul.questions .indent {
@@ -66,114 +71,193 @@
         height: 50px;
     }
 
-    ul.questions li.question ul {
-        list-style-type: none;
+    ul {
+     list-style-type: none;
     }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+
+
+
+
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="row">
+    <br>
     <div class="col-md-12">
-    <ul class="questions">
-        <li class="question">
-            <div class="strong">{% trans "Evaluating the second game," %}</div>
-            <div class="strong">{% trans "I am..." %}</div>
-            <ul>
-                <li>{% trans "Not at all" %} {{form.q3_second_game_surprised}} {% trans "Entirely surprised" %}</li>
-                <li>{% trans "Not at all" %} {{form.q3_second_game_satisfied}}  {% trans "Entirely satisfied" %}</li>
-                <li>{% trans "Not at all" %} {{form.q3_second_game_upset}}  {% trans "Entirely upset" %}</li>
-            </ul>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "How much did the players help each other in the second game?" %}</div>
-            <div class="strong">{% trans "Group members ..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_help_each_other_in_the_second_game}} {% trans "Full cooperation" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Is there any 'team spirit' or 'cohesion'?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_team_spirit}} {% trans "Entirely" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "How important were the recommendations of actions to maximize everyone's resources?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_recommendations_of_actions_to_maximize_everyones_resources}} {% trans "Very helpful" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Did you follow the recommendations of action?" %}</div>
-            <div class="strong">{% trans "The recommendations of actions were..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_i_follow_recommendations_of_action_followed}} {% trans "Entirely followed" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_i_follow_recommendations_of_action_my_advantage}} {% trans "Followed to try to maximize my advantage" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Did other members follow the recommendations of action?" %}</div>
-            <div class="strong">{% trans "Some or all followed..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_others_follow_recommendations_of_action_followed}} {% trans "Entirely" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_others_follow_recommendations_of_action_their_advantage}} {% trans "Followed to try to maximizing their advantage" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Your opinion: If everyone followed the recommendations entirely, would everyone maximize his own resources?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_yopinion_if_they_followed_would_everyone_max_his_resources}} {% trans "Entirely" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Explain in a few sentences: What was the second game like? What was different and is it (if different) because of the communication? Communicated before, what worked and what didn't work at all? Did you follow the 'rules' and why not? Etc." %}</div>
-            <div class="indent">{{form.q3_second_game_different_and_is_it_because_of_the_communication}}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Experienced from the second game and the communication: What would be the best strategy to optimize everyone's resources?" %}</div>
-            <div class="indent">{{form.q3_the_best_strategy_to_optimize_everyones_resources}}</div>
-        </li>
-    </ul>
+        <ul class="questions">
+            <li class="question">
+                <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im zweiten Spiel
+                    zusammenarbeiteten?
+                </div>
+                <div>Die Gruppenmitglieder arbeiten…</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_confidant_second_game_teamwork}} vollkommen zusammen</li>
+                </ul>
+            </li>
 
-    <h4>{% trans "Details regarding you as a person" %}</h4>
-    <ul class="questions">
-        <li class="question">
-            <div class="strong">{% trans "Gender" %}</div>
-            <div class="indent">{{form.q3_gender}}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Birthday" %}</div>
-            <div class="indent input-group">
-                {{form.q3_birthday}}
-                <span class="btn input-group-addon">
+            <li class="question">
+                <div class="strong">Inwiefern empfinden Sie eine Art 'Teamgeist' in der Gruppe?</div>
+                <div>Ich empfinde...</div>
+                <ul>
+                    <li>überhaupt kein {{form.q3_confidant_second_game_teamspirit}} einen starken Teamgeist</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">In wie weit haben sich die anderen Gruppenmitglieder an die Handlungsempfehlungen
+                    gehalten?
+                </div>
+                <div>Die Mehrheit / die Hälfte der anderen Gruppenmitglieder haben die Handlungsempfehlungen...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_confidant_majority_followed_communication_inputs}} vollkommen
+                        befolgt.
+                    </li>
+                    <li>überhaupt nicht {{form.q3_confidant_majority_took_advantage_communication_inputs}} maximal
+                        ausgenutzt.
+                    </li>
+                </ul>
+                <br>
+                <div>Eine Minderheit / die andere Hälfte der anderen Gruppenmitglieder haben die
+                    Handlungsempfehlungen...
+                </div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_confidant_minority_followed_communication_inputs}} vollkommen
+                        befolgt.
+                    </li>
+                    <li>überhaupt nicht {{form.q3_confidant_minority_took_advantage_communication_inputs}} maximal
+                        ausgenutzt.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Aufgrund Ihrer Erfahrungen aus den zwei Spielen, was denken Sie nun, wäre die
+                    optimale Strategie um die Ressourcen aller zu maximieren?
+                </div>
+                <div class="indent">{{form.q3_confidant_best_strategy_to_max_resources}}</div>
+            </li>
+
+            <br>
+            <h4>Angaben zu Ihrer Person</h4>
+            <br>
+            <ul class="questions">
+                <li class="question">
+                    <div class="strong">Geschlecht</div>
+                    <div class="indent">{{form.q3_confidant_gender}}</div>
+                </li>
+                <li class="question">
+                    <div class="strong">Geburtstag:</div>
+                    <div class="indent input-group">
+                        {{form.q3_confidant_birthday}}
+                        <span class="btn input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-            </div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Main subject in university:" %}</div>
-            <div class="indent small-tarea">{{form.q3_main_subject_in_university}}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Did you already take part in a problem solving or cooperational game/experiment?" %}</div>
-            <div class="indent">{{form.q3_already_take_part_in_a_problem_solving}}</div>
-        </li>
-    </ul>
+                    </div>
+                </li>
+                <li class="question">
+                    <div class="strong">Hauptfach:</div>
+                    <div class="indent small-tarea">{{form.q3_confidant_main_subject_in_university}}</div>
+                </li>
+                <li class="question">
+                    <div class="strong">Haben Sie schon einmal in einem Problemlöse-/Kooperations-Experiment wie diesem
+                        teilgenommen?
+                    </div>
+                    <div class="indent">{{form.q3_confidant_already_take_part_in_a_problem_solving}}</div>
+                    <br>
+                    <div class="strong">Falls Ja, wieviele Male und das letzte Mal vor wievielen Monaten?</div>
+                    <div class="indent small-tarea">{{form.q3_confidant_already_took_part_x_times_for_x_months}}</div>
+                </li>
+            </ul>
 
-    <h4>{% trans "Evaluation" %}</h4>
-    <ul class="questions">
-        <li class="question">
-            <div class="strong">{% trans "The experiment itself was interesting?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_experiment_itself_was_interessting}} {% trans "Very interesting" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Were you personally engaged achieving good results?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_were_you_personally_engaged_achieving_good_results}} {% trans "Entirely" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Was it difficult understanding and solving the problem?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_dificult_understanding_and_solving_the_problem}} {% trans "Very difficult" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Was it obvious what to do?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q3_was_it_obvious_what_to_do}} {% trans "Entirely" %}</div>
-        </li>
-        <li class="question">
-            <div class="strong">{% trans "Please write a short feedback: What was good and what were you upset about? What are possible things to improve/change?" %}</div>
-            <div class="indent">{{form.q3_short_feedback}}</div>
-        </li>
+            <br>
+            <h4>Evaluation des Experiments</h4>
+            <br>
+            <ul class="questions">
+                <li class="question">
+                    <div class="strong">Wie interessant war das Experiment für Sie?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_confidant_experiment_itself_was_interessting}} äusserst
+                            interessant.
+                        </li>
+                    </ul>
+                </li>
 
-    </ul>
+                <li class="question">
+                    <div class="strong">Wie sehr bemühten Sie sich um möglichst gute Resultate?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_confidant_were_you_personally_engaged_achieving_good_results}}
+                            äusserst
+                            bemüht.
+                        </li>
+                    </ul>
+                </li>
 
+                <li class="question">
+                    <div class="strong">Wie schwierig war es, das Problem zu verstehen und zu lösen?</div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_confidant_dificult_understanding_and_solving_the_problem}}
+                            äusserst
+                            schwierig.
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wie klar waren die Anweisungen des Experiments, damit Sie wussten, was Sie im
+                        Rahmen des Experiments zu tun haben?
+                    </div>
+                    <ul>
+                        <li>überhaupt nicht {{form.q3_confidant_was_it_obvious_what_to_do}}  äusserst klar.</li>
+                    </ul>
+                </li>
+
+
+                <li class="question">
+                    <div class="strong">Gab es in den Fragebögen Fragen oder Antwortoptionen, welche unklar waren oder
+                        wo Sie unsicher waren, was wir wissen wollen? Wenn ja, wie viele solcher Fragen / Antworten gab
+                        es ungefähr (wenn keine, tragen Sie '0' ein)?
+                    </div>
+                    <div class="indent">{{form.q3_confidant_count_unclear_questions}}</div>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Erinnern Sie sich noch an Beispiele solcher unklaren Fragen oder
+                        Antwortoptionen? Wenn ja, beschreiben Sie kurz, welche diese waren.
+                    </div>
+                    <div class="indent">{{form.q3_confidant_unclear_questions_description}}</div>
+                </li>
+
+
+                <li class="question">
+                    <div class="strong">Traten während den Spielen oder der Kommunikation technische Probleme auf?</div>
+                    <br>
+                    <ul>
+                        <li>{{form.q3_confidant_technical_issues}}</li>
+                    </ul>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Wenn ja, eschreiben Sie kurz die aufgetretenen Probleme:</div>
+                    <div class="indent">{{form.q3_confidant_technical_issues_details}}</div>
+                </li>
+
+                <li class="question">
+                    <div class="strong">Sie haben nun das Ende des Experiments erreicht. Herzlichen Dank für die
+                        Teilnahme! Wenn Sie Versuchspersonenstunden (BA-Studierende der Psychologie) oder eine Bonusnote
+                        (Teilnehmende der Vorlesung Umweltpsychologie) dafür erhalten und gegebenenfalls den Gewinn als
+                        einer der besten Spieler erhalten wollen, notieren Sie sich unbedingt dieses von Ihnen
+                        generierten Code: [Code von der ersten Seite nochmals gross anzeigen]
+                    </div>
+                </li>
+            </ul>
+        </ul>
     </div>
 </div>
 

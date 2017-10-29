@@ -26,6 +26,7 @@ Fragenbogen 3
 
 
 
+
 </script>
 {% endblock %}
 
@@ -80,6 +81,7 @@ Fragenbogen 3
 
 
 
+
 </style>
 {% endblock %}
 
@@ -88,6 +90,18 @@ Fragenbogen 3
     <br>
     <div class="col-md-12">
         <ul class="questions">
+
+            <li class="question">
+                <div class="strong">Wie beurteilen Sie das Resultat aus dem zweiten Spiel?</div>
+                <div>Ich bin…</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q3_second_game_results_surprised}} völlig überrascht.</li>
+                    <li>überhaupt nicht {{form.q3_second_game_results_satisfied}} völlig zufrieden.</li>
+                    <li>überhaupt nicht {{form.q3_second_game_results_upset}} äusserst verärgert.</li>
+                </ul>
+            </li>
+
+
             <li class="question">
                 <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im zweiten Spiel
                     zusammenarbeiteten?
@@ -180,6 +194,13 @@ Fragenbogen 3
                 <div class="indent">{{form.q3_second_round_impressions}}</div>
             </li>
 
+             <li class="question">
+                <div class="strong">Aufgrund Ihrer Erfahrungen aus den zwei Spielen, was denken Sie nun, wäre die
+                    optimale Strategie um die Ressourcen aller zu maximieren?
+                </div>
+                <div class="indent">{{form.q3_best_strategy_to_max_resources}}</div>
+            </li>
+
 
             <br>
             <h4>Angaben zu Ihrer Person</h4>
@@ -206,7 +227,6 @@ Fragenbogen 3
                     <div class="strong">Haben Sie schon einmal in einem Problemlöse-/Kooperations-Experiment wie diesem
                         teilgenommen?
                     </div>
-                    <br>
                     <div class="indent">{{form.q3_already_take_part_in_a_problem_solving}}</div>
                     <br>
                     <div class="strong">Falls Ja, wieviele Male und das letzte Mal vor wievielen Monaten?</div>

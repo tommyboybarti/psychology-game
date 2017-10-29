@@ -12,27 +12,26 @@ class ConfidantQ3(Page):
     form_model = models.Player
     form_fields = [
 
-        'q3_second_game_surprised', 'q3_second_game_satisfied', 'q3_second_game_upset',
-
-        'q3_help_each_other_in_the_second_game',
-        'q3_team_spirit',
-        'q3_recommendations_of_actions_to_maximize_everyones_resources',
-        'q3_i_follow_recommendations_of_action_followed', 'q3_i_follow_recommendations_of_action_my_advantage',
-        'q3_others_follow_recommendations_of_action_followed',
-        'q3_others_follow_recommendations_of_action_their_advantage',
-        'q3_yopinion_if_they_followed_would_everyone_max_his_resources',
-
-        'q3_second_game_different_and_is_it_because_of_the_communication',
-        'q3_the_best_strategy_to_optimize_everyones_resources',
-
-        'q3_gender', 'q3_birthday',
-        'q3_main_subject_in_university', 'q3_already_take_part_in_a_problem_solving',
-
-        'q3_experiment_itself_was_interessting',
-        'q3_were_you_personally_engaged_achieving_good_results',
-        'q3_dificult_understanding_and_solving_the_problem',
-        'q3_was_it_obvious_what_to_do',
-        'q3_short_feedback'
+        'q3_confidant_second_game_teamwork',
+        'q3_confidant_second_game_teamspirit',
+        'q3_confidant_majority_followed_communication_inputs',
+        'q3_confidant_majority_took_advantage_communication_inputs',
+        'q3_confidant_minority_followed_communication_inputs',
+        'q3_confidant_minority_took_advantage_communication_inputs',
+        'q3_confidant_best_strategy_to_max_resources',
+        'q3_confidant_gender',
+        'q3_confidant_birthday',
+        'q3_confidant_main_subject_in_university',
+        'q3_confidant_already_take_part_in_a_problem_solving',
+        'q3_confidant_already_took_part_x_times_for_x_months',
+        'q3_confidant_experiment_itself_was_interessting',
+        'q3_confidant_were_you_personally_engaged_achieving_good_results',
+        'q3_confidant_dificult_understanding_and_solving_the_problem',
+        'q3_confidant_was_it_obvious_what_to_do',
+        'q3_confidant_count_unclear_questions',
+        'q3_confidant_unclear_questions_description',
+        'q3_confidant_technical_issues',
+        'q3_confidant_technical_issues_details'
     ]
 
     def is_displayed(self):
@@ -47,6 +46,9 @@ class PlaceboQ3(Page):
     form_model = models.Player
     form_fields = [
 
+        'q3_second_game_results_surprised',
+        'q3_second_game_results_satisfied',
+        'q3_second_game_results_upset',
         'q3_second_game_teamwork',
         'q3_second_game_teamspirit',
         'q3_communication_inputs_maxresources_how_useful',
@@ -59,6 +61,7 @@ class PlaceboQ3(Page):
         'q3_how_max_resources_communication_inputs_if_followed',
         'q3_after_second_round_like_others',
         'q3_second_round_impressions',
+        'q3_best_strategy_to_max_resources',
         'q3_gender',
         'q3_birthday',
         'q3_main_subject_in_university',
