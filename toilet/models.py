@@ -25,8 +25,8 @@ class Constants(BaseConstants):
     num_rounds = 3
     available_group_sizes = (3, 4, 5)
 
-    max_toilet = 12.
-    max_health = 12
+    max_toilet = 10.
+    max_health = 10
 
 
 class Subsession(BaseSubsession):
@@ -55,47 +55,31 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
 
-    toilet = models.FloatField(min=0, max=Constants.max_toilet, default=4)
-
-    def get_resources_inc(self, player):
-        if player.health <= 4:
-            return 0
-        elif player.health <= 8:
-            return 1
-        return 2
+    toilet = models.FloatField(min=0, max=Constants.max_toilet, default=3)
 
     def init_group(self):
         if self.round_number == 1:
-            self.toilet = 4
+            self.toilet = 3
         else:
             prev_round = self.in_round(self.round_number - 1)
             self.toilet = prev_round.toilet
 
         for player in self.get_players():
             if self.round_number == 1:
-                player.health = 12
-                player.resources = 9
+                player.health = 10
+                player.resources = 10
             else:
                 player_prev_round = player.in_round(self.round_number - 1)
-                player.resources = (
-                    player_prev_round.resources +
-                    self.get_resources_inc(player_prev_round))
+                player.resources = (player_prev_round.resources + 3)
                 player.health = player_prev_round.health + 1
                 if player.health > Constants.max_health:
                     player.health = Constants.max_health
-
-    def current_toilet_usage_health_lose(self):
-        if self.toilet <= 4:
-            return 2
-        elif self.toilet <= 8:
-            return 1
-        return 0
 
     def set_payoff(self):
         players = self.get_players()
         toilet_dirt, part_of_big_clean = 0., []
         dont_use_the_toilet = sum(1 for player in players if not player.use_toilet)
-        toilet_usage_health_lose = self.current_toilet_usage_health_lose()
+        toilet_usage_health_lose = 2
 
         for player in players:
             if not player.health:
@@ -105,6 +89,7 @@ class Group(BaseGroup):
 
             if player.use_toilet:
                 player.health -= toilet_usage_health_lose
+
                 if player.small_cleaning and player.resources:
                     toilet_dirt += 0.5
                     player.resources -= 1
@@ -127,7 +112,7 @@ class Group(BaseGroup):
 
         # big clean
         if part_of_big_clean:
-            contribution, resources = int(12/len(part_of_big_clean)), 0.
+            contribution, resources = int(10/len(part_of_big_clean)), 0.
             for player in part_of_big_clean:
                 if player.resources >= contribution:
                     resources += contribution
@@ -135,12 +120,12 @@ class Group(BaseGroup):
                 else:
                     resources += player.resources
                     player.resources = 0
-            clean_prop =  resources / 12.
-            self.toilet += (12. - self.toilet) * clean_prop
+            clean_prop = resources / 10.
+            self.toilet += (10. - self.toilet) * clean_prop
         if self.toilet < 0:
             self.toilet = 0
-        elif self.toilet > 12:
-            self.toilet = 12
+        elif self.toilet > 10:
+            self.toilet = 10
 
         # in the last round set the resources as payoff
         if self.round_number == Constants.num_rounds:
