@@ -133,19 +133,3 @@ class Player(BasePlayer):
                                                      choices=['Ja', 'Nein'])
     q3_confidant_technical_issues_details = models.TextField()
 
-
-    # debriefing
-    debriefing_guess_which_group = models.CharField(max_length=255, widget=widgets.RadioSelect(), choices=[
-        'Gruppe mit Anweisungen für alle zu positiver Kommunikation',
-        'Gruppe mit Konfident mit positiver Kommunikation',
-        'Gruppe mit Konfident mit negativer Kommunikation', 'Kontrollgruppe ohne eigentliche Anweisungen', 'Weiss nicht'
-    ])
-
-    debriefing_sure_about_confidant_in_group = models.PositiveIntegerField(min=1, max=10,
-                                                                         widget=widgets.SliderInput(show_value=False))
-
-    debriefing_who_was_confidant = models.CharField(max_length=255, widget=widgets.RadioSelect(),
-                                                     choices=[])
-
-    what_made_you_assume_confidant = models.TextField(default='n/a')
-    debriefing_feedback = models.TextField()

@@ -135,7 +135,7 @@ SESSION_CONFIGS = [
         'app_sequence': [
             'intro', 'toilet', 'toilet_questionnaire_1',
             'chat', 'toilet_questionnaire_2',
-            'toilet2', 'toilet_questionnaire_3'
+            'toilet2', 'debriefing'
         ],
     },
     {
@@ -204,6 +204,14 @@ if DEBUG:
             'num_demo_participants': 1,
             'app_sequence': [
                 'toilet_questionnaire_3',
+            ],
+        },
+        {
+            'name': 'debriefing',
+            'display_name': "Debriefing",
+            'num_demo_participants': 1,
+            'app_sequence': [
+                'debriefing',
             ],
         }
     ])

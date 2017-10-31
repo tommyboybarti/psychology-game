@@ -43,6 +43,7 @@ class ConfidantQ3(Page):
 
 
 class PlaceboQ3(Page):
+
     form_model = models.Player
     form_fields = [
 
@@ -86,39 +87,6 @@ class PlaceboQ3(Page):
         return True
 
 
-class PlaceboDebriefing(Page):
-    form_model = models.Player
-    form_fields = [
-
-        'debriefing_guess_which_group',
-        'debriefing_sure_about_confidant_in_group',
-        'debriefing_who_was_confidant',
-        'what_made_you_assume_confidant',
-        'debriefing_feedback'
-    ]
-
-    def debriefing_who_was_confidant_choices(self):
-
-        choices = []
-        for player in self.group.get_players():
-
-            if player.id_in_group == self.player.id_in_group:
-                choices.append('Ich')
-            else:
-                choices.append('Spieler ' + str(player.id_in_group))
-
-        choices.append('Niemand (Gruppe ohne Konfident)')
-
-        return choices
-
-    def is_displayed(self):
-        if self.player.participant.vars.get('is_positive_confidant', False) or self.player.participant.vars.get(
-                'is_negative_confidant', False):
-            return False
-
-        return True
-
-
 page_sequence = [
-    ConfidantQ3, PlaceboQ3, PlaceboDebriefing
+    ConfidantQ3, PlaceboQ3
 ]
