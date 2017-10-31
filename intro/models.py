@@ -33,4 +33,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+
+    participant_email = models.EmailField();
+
+

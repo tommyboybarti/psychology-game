@@ -2,39 +2,56 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Einverst&auml;ndniserkl&auml;rung
+Einverst&auml;ndniserkl&auml;rung
 {% endblock %}
 
 {% block content %}
+<style>
+
+    .strong {
+        font-weight: bold;
+        margin-bottom : 15px;
+    }
+
+</style>
 <div class="row lead">
     <div>
-       Einverständniserklärung
-
-Dieses Experiment wird im Rahmen der Masterarbeit von Ndinelau Xavier, betreut durch Dr. Robert Tobias (Sozialpsychologie, Universitaet in Zuerich) durchgeführt. Ziel des Experimentes ist ein besse- res Verständnis der Wirkung von Kommunikation auf Kooperation innerhalb von Gruppen.
-<br>
-Das Experiment dauert ca. 1.5 Stunden und Bachelor-Studierende der Psychologie können dafür 1.5 Versuchspersonenstunden beziehen, sofern sie dem Experiment bis zum Ende beiwohnen. Weiter besteht die Möglichkeit, 40 Fr. zu gewinnen, was von Ihrer Leistung im Experiment abhängt. Für technische Probleme auf der Seite der Teilnehmenden sind diese verantwortlich. Wir können z.B. nicht erkennen, ob eine Verbindung absichtlich oder unbeabsichtigt abgebrochen wird. Bei techni- schen Problemen auf unserer Seite, würde der Aufwand bis zum Abbruch des Experiments vergütet. Wenn also z.B. das Experiment nach 30 Minuten aufgrund technischer Probleme abgebrochen wer- den müsste, würden 0.5 Versuchspersonenstunden vergeben und kein Gewinn verteilt.
-<br>
-Die Teilnahme an diesem Experiment ist vollkommen freiwillig und wirkt sich in keiner Weise auf das Bestehen des Kurses oder der Prüfung aus. Sollten Sie nicht an diesem Experiment teilnehmen oder dieses abbrechen wollen, so können Sie dies jederzeit und ohne Angabe von Gründen tun ohne ir- gendwelche negativen Konsequenzen befürchten zu müssen. Um aussagekräftige Resultate zu er- halten, sind wir aber darauf angewiesen, dass möglichst viele Personen das Experiment bis zu Ende durchführen.
-<br>
-Die im Rahmen des Experiments erhobenen Daten werden anonym gespeichert und ausgewertet. Es ist also nicht möglich, aus den Daten Rückschlüsse auf Ihre Person zu ziehen. Resultate von Analy- sen und auch die Daten selber können veröffentlicht werden, aber ohne dass irgendwie von den Da- ten auf Ihre Person geschlossen werden kann.
-<br>
-Sollten Sie noch Fragen zum Experiment haben, können Sie sich während und nach dem Experiment via E-Mail (ndinelau.xavier@uzh.ch) an mich wenden.
-<br>
-<b>BEVOR SIE AUF ‚NEXT’ KLICKEN, beachten Sie bitte Folgendes:</b> Mit dem Fortfahren bestätigen Sie, obige Information gelesen und verstanden zu haben und zudem, dass Ihnen allfällige Fragen im Zusammenhang mit dieser Untersuchung ausreichend beantwortet wurden. Nachdem Sie 'Next' ge- drückt haben, warten Sie auf ihre Teammitglieder. Daraufhin fängt das Spiel automatisch an, mit ei- nem Zeitlimit je Runde von 20 Sekunden.
-<br>
-Dieses Experiment wird im Rahmen der Masterarbeit von Ndinelau Xavier, betreut durch Dr. Robert Tobias (Sozialpsychologie, Universitaet in Zuerich) durchgeführt. Ziel des Experimentes ist ein besse- res Verständnis der Wirkung von Kommunikation auf Kooperation innerhalb von Gruppen.
-<br>
-Das Experiment dauert ca. 1.5 Stunden und Bachelor-Studierende der Psychologie können dafür 1.5 Versuchspersonenstunden beziehen, sofern sie dem Experiment bis zum Ende beiwohnen. Weiter besteht die Möglichkeit, 40 Fr. zu gewinnen, was von Ihrer Leistung im Experiment abhängt. Für technische Probleme auf der Seite der Teilnehmenden sind diese verantwortlich. Wir können z.B. nicht erkennen, ob eine Verbindung absichtlich oder unbeabsichtigt abgebrochen wird. Bei techni- schen Problemen auf unserer Seite, würde der Aufwand bis zum Abbruch des Experiments vergütet. Wenn also z.B. das Experiment nach 30 Minuten aufgrund technischer Probleme abgebrochen wer- den müsste, würden 0.5 Versuchspersonenstunden vergeben und kein Gewinn verteilt.
-<br>
-Die Teilnahme an diesem Experiment ist vollkommen freiwillig und wirkt sich in keiner Weise auf das Bestehen des Kurses oder der Prüfung aus. Sollten Sie nicht an diesem Experiment teilnehmen oder dieses abbrechen wollen, so können Sie dies jederzeit und ohne Angabe von Gründen tun ohne ir- gendwelche negativen Konsequenzen befürchten zu müssen. Um aussagekräftige Resultate zu er- halten, sind wir aber darauf angewiesen, dass möglichst viele Personen das Experiment bis zu Ende durchführen.
-<br>
-Die im Rahmen des Experiments erhobenen Daten werden anonym gespeichert und ausgewertet. Es ist also nicht möglich, aus den Daten Rückschlüsse auf Ihre Person zu ziehen. Resultate von Analy- sen und auch die Daten selber können veröffentlicht werden, aber ohne dass irgendwie von den Da- ten auf Ihre Person geschlossen werden kann.
-<br>
-Sollten Sie noch Fragen zum Experiment haben, können Sie sich während und nach dem Experiment via E-Mail (ndinelau.xavier@uzh.ch) an mich wenden.
-<br>
-<b>BEVOR SIE AUF ‚NEXT’ KLICKEN, beachten Sie bitte Folgendes:</b> Mit dem Fortfahren bestätigen Sie, obige Information gelesen und verstanden zu haben und zudem, dass Ihnen allfällige Fragen im Zusammenhang mit dieser Untersuchung ausreichend beantwortet wurden. Nachdem Sie 'Next' ge- drückt haben, warten Sie auf ihre Teammitglieder. Daraufhin fängt das Spiel automatisch an, mit ei- nem Zeitlimit je Runde von 20 Sekunden.
-
-
+        <p>Dieses Experiment wird im Rahmen der Masterarbeit von Ndinelau Xavier, betreut durch Dr. Robert Tobias
+            (Sozialpsychologie, Universitaet in Zuerich) durchgeführt. Ziel des Experimentes ist ein besseres
+            Verständnis
+            der Wirkung von Kommunikation auf Kooperation innerhalb von Gruppen.</p>
+        <p>Das Experiment dauert ca. 1.5 Stunden und Bachelor-Studierende der Psychologie können dafür 1.5
+            Versuchspersonenstunden beziehen, sofern sie dem Experiment bis zum Ende beiwohnen. Weiter besteht die
+            Möglichkeit, 40 Fr. zu gewinnen, was von Ihrer Leistung im Experiment abhängt. Für technische Probleme auf
+            der
+            Seite der Teilnehmenden sind diese verantwortlich. Wir können z.B. nicht erkennen, ob eine Verbindung
+            absichtlich oder unbeabsichtigt abgebrochen wird. Bei technischen Problemen auf unserer Seite, würde der
+            Aufwand
+            bis zum Abbruch des Experiments vergütet. Wenn also z.B. das Experiment nach 30 Minuten aufgrund technischer
+            Probleme abgebrochen werden müsste, würden 0.5 Versuchspersonenstunden vergeben und kein Gewinn
+            verteilt.</p>
+        <p>Die Teilnahme an diesem Experiment ist vollkommen freiwillig und wirkt sich in keiner Weise auf das Bestehen
+            des
+            Kurses oder der Prüfung aus. Sollten Sie nicht an diesem Experiment teilnehmen oder dieses abbrechen wollen,
+            so
+            können Sie dies jederzeit und ohne Angabe von Gründen tun ohne irgendwelche negativen Konsequenzen
+            befürchten zu
+            müssen. Um aussagekräftige Resultate zu erhalten, sind wir aber darauf angewiesen, dass möglichst viele
+            Personen
+            das Experiment bis zu Ende durchführen.</p>
+        <p>Die im Rahmen des Experiments erhobenen Daten werden anonym gespeichert und ausgewertet. Es ist also nicht
+            möglich, aus den Daten Rückschlüsse auf Ihre Person zu ziehen. Resultate von Analysen und auch die Daten
+            selber
+            können veröffentlicht werden, aber ohne dass irgendwie von den Daten auf Ihre Person geschlossen werden
+            kann.</p>
+        <p>Sollten Sie noch Fragen zum Experiment haben, können Sie sich während und nach dem Experiment via E-Mail
+            (ndinelau.xavier@uzh.ch) an mich wenden.</p><br>
+        <p><b>BEVOR SIE AUF 'NEXT' KLICKEN</b>, bestätigen Sie bitte, dass Sie obige Information gelesen und verstanden haben
+            und,
+            dass Ihnen allfällige Fragen im Zusammenhang mit dieser Untersuchung ausreichend beantwortet wurden, indem
+            Sie
+            in das Feld unten Ihre E-Mail schreiben:</p>
+        <div>{{form.participant_email}}</div>
     </div>
 </div>
 

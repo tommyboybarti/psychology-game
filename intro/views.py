@@ -11,12 +11,19 @@ from .models import Constants
 class Instructions(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
+
     def vars_for_template(self):
         return {"players_per_group": 3 }#self.session.config['players_per_group']}
 
 
-
 class Agreement(Page):
+
+    form_model = models.Player
+    form_fields = [
+
+        'participant_email'
+    ]
+
     def is_displayed(self):
         return self.subsession.round_number == 1
 
