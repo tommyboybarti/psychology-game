@@ -213,6 +213,14 @@ if DEBUG:
             'app_sequence': [
                 'debriefing',
             ],
+        },
+        {
+            'name': 'intro',
+            'display_name': "intro",
+            'num_demo_participants': 1,
+            'app_sequence': [
+                'intro',
+            ],
         }
     ])
 

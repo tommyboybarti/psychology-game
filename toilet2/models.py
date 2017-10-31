@@ -112,7 +112,7 @@ class Group(BaseGroup):
 
         # big clean
         if part_of_big_clean:
-            contribution, resources = int(10/len(part_of_big_clean)), 0.
+            contribution, resources = int(20/len(part_of_big_clean)), 0.
             for player in part_of_big_clean:
                 if player.resources >= contribution:
                     resources += contribution
@@ -120,12 +120,12 @@ class Group(BaseGroup):
                 else:
                     resources += player.resources
                     player.resources = 0
-            clean_prop =  resources / 10.
-            self.toilet += (10. - self.toilet) * clean_prop
+            clean_prop =  resources / 20.
+            self.toilet += (20. - self.toilet) * clean_prop
         if self.toilet < 0:
             self.toilet = 0
-        elif self.toilet > 10:
-            self.toilet = 10
+        elif self.toilet > 20:
+            self.toilet = 20
 
         # in the last round set the resources as payoff
         if self.round_number == Constants.num_rounds:
