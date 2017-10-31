@@ -216,7 +216,7 @@ if DEBUG:
         },
         {
             'name': 'intro',
-            'display_name': "intro",
+            'display_name': "Intro",
             'num_demo_participants': 1,
             'app_sequence': [
                 'intro',
