@@ -209,7 +209,8 @@ if DEBUG:
         {
             'name': 'debriefing',
             'display_name': "Debriefing",
-            'num_demo_participants': 1,
+            'num_demo_participants': 3,
+            'players_per_group': 3,
             'app_sequence': [
                 'debriefing',
             ],

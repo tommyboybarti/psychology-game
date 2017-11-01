@@ -25,9 +25,11 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    available_group_sizes = (3, 4, 5)
+
 
 class Subsession(BaseSubsession):
-    
+
     def chunk_it(self, seq, num):
         avg = len(seq) / float(num)
         out = []
