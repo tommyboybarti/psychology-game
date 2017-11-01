@@ -8,7 +8,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class Instructions(Page):
+class Instructions_old(Page):
     def is_displayed(self):
         return self.subsession.round_number == 1
 
@@ -29,5 +29,5 @@ class Agreement(Page):
 
 
 page_sequence = [
-    Instructions, Agreement
+    Instructions_old, Agreement
 ]
