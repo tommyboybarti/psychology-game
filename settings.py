@@ -135,7 +135,7 @@ SESSION_CONFIGS = [
         'app_sequence': [
             'intro', 'toilet', 'toilet_questionnaire_1',
             'chat', 'toilet_questionnaire_2',
-            'toilet2', 'debriefing'
+            'toilet2', 'toilet_questionnaire_3', 'debriefing'
         ],
     },
     {

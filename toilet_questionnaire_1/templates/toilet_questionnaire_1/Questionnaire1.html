@@ -2,93 +2,109 @@
 {% load staticfiles otree_tags i18n %}
 
 {% block title %}
-    {% trans "Questionnaire 1" %}
+    Fragenbogen 1
 {% endblock %}
 
 {% block content %}
 <style>
-    ul#questions input.form-control {
+
+     ul.questions input.form-control {
         display: inline;
         margin: 3px;
     }
 
-    ul#questions div.strong {
+    ul.questions div.strong {
         font-weight: bold;
     }
 
-    ul#questions li.question {
-        margin-bottom: 20px;
+    ul.questions div.no-strong *{
+        font-weight: normal;
     }
 
-    ul#questions .indent {
+    ul.questions li.question {
+
+        margin:0 0 50px 0;
+    }
+
+    ul.questions .indent {
         margin-left: 40px;
     }
 
-    ul#questions textarea {
+    ul.questions textarea {
         width: 100%;
         max-width: 100%;
         resize: none;
     }
 
-    ul.questions li.question ul {
-        list-style-type: none;
+    ul {
+     list-style-type: none;
     }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
 </style>
 <div class="row">
     <div class="col-md-12">
     <ul id="questions">
         <li class="question">
-            <div class="strong">{% trans "Evaluating the first game," %}</div>
-            <div class="strong">{% trans "I am..." %}</div>
+            <div class="strong">Wie beurteilen Sie das Resultat aus dem ersten Spiel?</div>
+            <div>Ich bin…</div>
             <ul>
-                <li>{% trans "Not at all" %} {{form.q1_first_game_judge_surprised}} {% trans "Entirely surprised" %}</li>
-                <li>{% trans "Not at all" %} {{form.q1_first_game_judge_satisfied}}  {% trans "Entirely satisfied" %}</li>
-                <li>{% trans "Not at all" %} {{form.q1_first_game_judge_upset}}  {% trans "Entirely upset" %}</li>
+                <li>überhaupt nicht {{form.q1_first_game_judge_surprised}} völlig überrascht.</li>
+                <li>überhaupt nicht {{form.q1_first_game_judge_satisfied}}  völlig zufrieden.</li>
+                <li>überhaupt nicht {{form.q1_first_game_judge_upset}}  äusserst verärgert.</li>
             </ul>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How much are the players helping each other?" %}</div>
-            <div class="strong">{% trans "Group members..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_players_helping_each_other}} {% trans "Full cooperation" %}</div>
+            <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im Spiel zusammenarbeiteten?</div>
+            <div>Die Gruppenmitglieder arbeiten…</div>
+            <div class="indent">überhaupt nicht {{form.q1_players_helping_each_other}} vollkommen zusammen.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "Is there any 'team spirit' or 'cohesion'?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_team_spirit_or_cohesion}} {% trans "Entirely" %}</div>
+            <div class="strong">Inwiefern empfinden Sie eine Art 'Teamgeist' in der Gruppe?</div>
+            <div>Ich empfinde...</div>
+            <div class="indent">überhaupt keinen {{form.q1_team_spirit_or_cohesion}} einen sehr starken Teamgeist.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How important is your own self-presented image of and to yourself?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_important_presented_image_of_and_to_yourself}} {% trans "Very important" %}</div>
+            <div class="strong">Wie wichtig ist Ihnen, was die anderen über Sie und Ihr Verhalten denken, also Ihr Ansehen in der Gruppe?</div>
+            <div class="indent">überhaupt nicht {{form.q1_important_presented_image_of_and_to_yourself}} äusserst wichtig.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "Is greating maximum and fair resources for everyone important to you?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_important_maximum_and_fair_resources_to_everyone}} {% trans "Very important" %}</div>
+            <div class="strong">Wie wichtig ist Ihnen, dass alle ihre Ressourcen maximieren können, d.h. die Resultate fair sind?</div>
+            <div class="indent">überhaupt nicht {{form.q1_important_maximum_and_fair_resources_to_everyone}} äusserst wichtig.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How important is other members trust in you?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_important_other_members_trust_in_you}} {% trans "Very important" %}</div>
+            <div class="strong">Wie wichtig ist es Ihnen, dass die anderen Ihrer Gruppe Ihnen vertrauen (können)?</div>
+            <div class="indent">überhaupt nicht {{form.q1_important_other_members_trust_in_you}} äusserst wichtig.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How important is it to other members (not you) greating maximum and fair resources to everyone?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_important_not_you_maximum_and_fair_resources_to_everyone}} {% trans "Very important" %}</div>
+            <div class="strong">Was denken Sie, wie wichtig ist es den anderen, dass alle ihre Ressourcen maximieren können, d.h. die Resultate fair sind?</div>
+            <div>Den anderen ist es...</div>
+            <div class="indent">überhaupt nicht {{form.q1_important_not_you_maximum_and_fair_resources_to_everyone}} äusserst wichtig.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How much trust do you have into other members?" %}</div>
-            <div class="indent">{% trans "No trust at all" %} {{form.q1_trust_do_you_have_into_other_members}} {% trans "I fully trust them" %}</div>
+            <div class="strong">Wie sehr vertrauen Sie den anderen Ihrer Gruppe?</div>
+            <div class="indent">überhaupt nicht {{form.q1_trust_do_you_have_into_other_members}} vollkommen</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "All in all, how much do you like the other team-members?" %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_how_much_do_you_like_the_other_team_members}} {% trans "Completely" %}</div>
+            <div class="strong">Alles in allem, wie sehr mögen Sie die Gruppe bzw. die anderen Mitspieler?</div>
+            <div>Ich mag meine Mitspieler...</div>
+            <div class="indent">überhaupt nicht {{form.q1_how_much_do_you_like_the_other_team_members}} sehr</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How good do you understand solving the cleaning problem to great maximum resources?" %}</div>
-            <div class="strong">{% trans "I think, the solution is ..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_how_good_do_you_understand_solving}} {% trans "Completely understood" %}</div>
+            <div class="strong">Wie gut haben Sie verstanden, wie man das Reinigungsproblem lösen kann, so dass alle in der Gruppe möglichst viele Ressourcen ansammeln können?</div>
+            <div>Ich denke, ich habe das Problem bzw. Lösungsmöglichkeiten...</div>
+            <div class="indent">überhaupt nicht {{form.q1_how_good_do_you_understand_solving}} vollkommen verstanden.</div>
         </li>
         <li class="question">
-            <div class="strong">{% trans "How good do the other group members understand solving the cleaning problem to great maximum resources?" %}</div>
-            <div class="strong">{% trans "I think, other group members understand the solution..." %}</div>
-            <div class="indent">{% trans "Not at all" %} {{form.q1_how_good_do_the_other_group_members_understand_solving}} {% trans "Completely" %}</div>
+            <div class="strong">Und was denken Sie, wie gut haben die anderen Gruppenmitglieder verstanden, wie man das Reinigungsproblem lösen kann?</div>
+            <div>Ich denke, die anderen Gruppenmitglieder haben das Problem bzw. Lösungsmöglichkeiten…</div>
+            <div class="indent">überhaupt nicht {{form.q1_how_good_do_the_other_group_members_understand_solving}} vollkommen verstanden.</div>
         </li>
+
         <li class="question">
             <div class="strong">{% trans "Explain in a few sentences how to improve the groups behavior to maximize resources." %}</div>
             <div class="indent">{{form.q1_how_to_improve_the_groups_behavior_to_maximize_resources}}</div>

@@ -10,6 +10,7 @@ from otree import widgets
 from otree.common import Currency as c, currency_range, safe_json
 from otree.constants import BaseConstants
 from otree.models import BaseSubsession, BaseGroup, BasePlayer
+
 # </standard imports>
 
 author = 'Juan B Cabral'
@@ -22,15 +23,37 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'toilet'
     players_per_group = None
-    num_rounds = 3
+    num_rounds = 12
     available_group_sizes = (3, 4, 5)
 
-    max_toilet = 10.
-    max_health = 10
+    # toilet
+    max_toilet_condition = 10
+    min_toilet_condition = 0
+
+    start_value_toilet = 3
+
+    # health
+    start_value_health = 10
+
+    min_health_condition = 0
+    max_health_condition = 10
+
+    max_health_effect = 2
+
+    # resources
+    start_value_resources = 10
+    min_value_resources = 0
+
+    resources_incrementation = 3
+    max_resources_reduction = 3
+
+    # big clean
+    big_clean_cost = 20
+
+    big_clean_min_contribution = 5
 
 
 class Subsession(BaseSubsession):
-
     def chunk_it(self, seq, num):
         avg = len(seq) / float(num)
         out = []
@@ -54,42 +77,85 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+    toilet = models.FloatField(min=0, max=Constants.max_toilet_condition, default=Constants.start_value_toilet)
 
-    toilet = models.FloatField(min=0, max=Constants.max_toilet, default=3)
+
+    def resources_reduction(self, player):
+
+        return Constants.max_resources_reduction * (Constants.max_health_condition - player.health) / (
+            Constants.max_health_condition - Constants.min_health_condition)
 
     def init_group(self):
         if self.round_number == 1:
-            self.toilet = 3
+            self.toilet = 4
         else:
             prev_round = self.in_round(self.round_number - 1)
             self.toilet = prev_round.toilet
 
         for player in self.get_players():
             if self.round_number == 1:
-                player.health = 10
-                player.resources = 10
+                player.health = Constants.start_value_health
+                player.resources = Constants.start_value_resources
             else:
                 player_prev_round = player.in_round(self.round_number - 1)
-                player.resources = (player_prev_round.resources + 3)
+
+                player.resources = (
+                    player_prev_round.resources + Constants.resources_incrementation - self.resources_reduction(
+                        player_prev_round))
+
                 player.health = player_prev_round.health + 1
-                if player.health > Constants.max_health:
-                    player.health = Constants.max_health
+
+                if player.health > Constants.max_health_condition:
+                    player.health = Constants.max_health_condition
+
+    def current_toilet_usage_health_lose(self):
+
+        return Constants.max_health_effect * (Constants.max_toilet_condition - self.toilet) / (
+            Constants.max_toilet_condition - Constants.min_toilet_condition)
+
+    def missing_resources(self, player, contribution):
+        if player.resources < contribution:
+            missing_resources = contribution - player.resources
+            player.resources = 0
+
+            return missing_resources
+
+    def overflow_resources(self, player, contribution):
+        if player.resources > contribution:
+            overflow_resources = player.resources - contribution
+            player.resources -= contribution
+
+            return overflow_resources
+
+    def contribution_to_big_clean(self, player, contribution, total_resources_missing, total_resources_overflow):
+
+        if player.resources <= contribution:
+            return player.resources
+
+        elif player.resources > contribution:
+
+            if player.resources >= 5 and contribution < 5:
+                player.resources -= 5
+                return 5
+
+            return total_resources_missing * player.resources_overflow/total_resources_overflow
+
+
 
     def set_payoff(self):
         players = self.get_players()
         toilet_dirt, part_of_big_clean = 0., []
         dont_use_the_toilet = sum(1 for player in players if not player.use_toilet)
-        toilet_usage_health_lose = 2
+        toilet_usage_health_lose = self.current_toilet_usage_health_lose()
 
         for player in players:
             if not player.health:
-                continue # if player is dead don't play
+                continue  # if player is dead don't play
 
             player.health -= dont_use_the_toilet
 
             if player.use_toilet:
                 player.health -= toilet_usage_health_lose
-
                 if player.small_cleaning and player.resources:
                     toilet_dirt += 0.5
                     player.resources -= 1
@@ -98,34 +164,33 @@ class Group(BaseGroup):
 
             if player.health < 0:
                 player.health = 0
-            if player.health > Constants.max_health:
-                player.health = Constants.max_health
+            if player.health > Constants.max_health_condition:
+                player.health = Constants.max_health_condition
 
             if player.big_clean:
                 part_of_big_clean.append(player)
 
-
         # set the new status of toilet
         self.toilet -= toilet_dirt
         if self.toilet < 0:
-            self.toilet  = 0
+            self.toilet = 0
 
         # big clean
         if part_of_big_clean:
-            contribution, resources = int(20/len(part_of_big_clean)), 0.
+            contribution, resources = int(Constants.big_clean_cost / len(part_of_big_clean)), 0.
+            total_resources_missing = 0
+            total_resources_overflow = 0
+
             for player in part_of_big_clean:
-                if player.resources >= contribution:
-                    resources += contribution
-                    player.resources -= contribution
-                else:
-                    resources += player.resources
-                    player.resources = 0
-            clean_prop = resources / 20.
-            self.toilet += (20. - self.toilet) * clean_prop
-        if self.toilet < 0:
-            self.toilet = 0
-        elif self.toilet > 20:
-            self.toilet = 20
+                total_resources_missing += self.missing_resources(player, contribution)
+                total_resources_overflow += self.overflow_resources(player, contribution)
+                toilet_dirt += 0.5
+
+            for player in part_of_big_clean:
+                resources += self.contribution_to_big_clean(player,contribution, total_resources_missing, total_resources_overflow)
+
+            if resources >= Constants.big_clean_cost:
+                self.toilet = Constants.max_toilet_condition
 
         # in the last round set the resources as payoff
         if self.round_number == Constants.num_rounds:
@@ -134,12 +199,11 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-
-    health = models.PositiveIntegerField(min=0, max=Constants.max_health)
+    health = models.PositiveIntegerField(min=0, max=Constants.max_health_condition)
     resources = models.PositiveIntegerField(min=0)
+    resources_overflow = models.PositiveIntegerField(min=0)
 
     use_toilet = models.BooleanField(widget=widgets.RadioSelectHorizontal())
     small_cleaning = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
     big_clean = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-
