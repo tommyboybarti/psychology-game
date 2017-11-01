@@ -27,7 +27,27 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    
+    def chunk_it(self, seq, num):
+        avg = len(seq) / float(num)
+        out = []
+        last = 0.0
+        while last < len(seq):
+            out.append(seq[int(last):int(last + avg)])
+            last += avg
+        return sorted(out, key=lambda r: [p.id_in_group for p in r])
+
+    def before_session_starts(self):
+        # make groups
+        players_per_group = self.session.config['players_per_group']
+        players = self.get_players()
+        if players_per_group not in Constants.available_group_sizes:
+            raise ValueError("'players_per_group' mus be one of {}".format(Constants.available_group_sizes))
+        if len(players) % players_per_group != 0:
+            raise ValueError("'participants' must be a multiply of {}".format(players_per_group))
+        groups_n = int(len(players) / float(players_per_group))
+        groups_mtx = self.chunk_it(players, groups_n)
+        self.set_group_matrix(groups_mtx)
 
 
 class Group(BaseGroup):
