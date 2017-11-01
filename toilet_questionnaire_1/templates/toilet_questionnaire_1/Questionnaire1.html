@@ -2,7 +2,7 @@
 {% load staticfiles otree_tags i18n %}
 
 {% block title %}
-    Fragenbogen 1
+Fragenbogen 1
 {% endblock %}
 
 {% block content %}
@@ -45,74 +45,104 @@
       margin-top : 15px;
     }
 
+
 </style>
 <div class="row">
+    <br>
     <div class="col-md-12">
-    <ul id="questions">
-        <li class="question">
-            <div class="strong">Wie beurteilen Sie das Resultat aus dem ersten Spiel?</div>
-            <div>Ich bin…</div>
-            <ul>
-                <li>überhaupt nicht {{form.q1_first_game_judge_surprised}} völlig überrascht.</li>
-                <li>überhaupt nicht {{form.q1_first_game_judge_satisfied}}  völlig zufrieden.</li>
-                <li>überhaupt nicht {{form.q1_first_game_judge_upset}}  äusserst verärgert.</li>
-            </ul>
-        </li>
-        <li class="question">
-            <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im Spiel zusammenarbeiteten?</div>
-            <div>Die Gruppenmitglieder arbeiten…</div>
-            <div class="indent">überhaupt nicht {{form.q1_players_helping_each_other}} vollkommen zusammen.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Inwiefern empfinden Sie eine Art 'Teamgeist' in der Gruppe?</div>
-            <div>Ich empfinde...</div>
-            <div class="indent">überhaupt keinen {{form.q1_team_spirit_or_cohesion}} einen sehr starken Teamgeist.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Wie wichtig ist Ihnen, was die anderen über Sie und Ihr Verhalten denken, also Ihr Ansehen in der Gruppe?</div>
-            <div class="indent">überhaupt nicht {{form.q1_important_presented_image_of_and_to_yourself}} äusserst wichtig.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Wie wichtig ist Ihnen, dass alle ihre Ressourcen maximieren können, d.h. die Resultate fair sind?</div>
-            <div class="indent">überhaupt nicht {{form.q1_important_maximum_and_fair_resources_to_everyone}} äusserst wichtig.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Wie wichtig ist es Ihnen, dass die anderen Ihrer Gruppe Ihnen vertrauen (können)?</div>
-            <div class="indent">überhaupt nicht {{form.q1_important_other_members_trust_in_you}} äusserst wichtig.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Was denken Sie, wie wichtig ist es den anderen, dass alle ihre Ressourcen maximieren können, d.h. die Resultate fair sind?</div>
-            <div>Den anderen ist es...</div>
-            <div class="indent">überhaupt nicht {{form.q1_important_not_you_maximum_and_fair_resources_to_everyone}} äusserst wichtig.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Wie sehr vertrauen Sie den anderen Ihrer Gruppe?</div>
-            <div class="indent">überhaupt nicht {{form.q1_trust_do_you_have_into_other_members}} vollkommen</div>
-        </li>
-        <li class="question">
-            <div class="strong">Alles in allem, wie sehr mögen Sie die Gruppe bzw. die anderen Mitspieler?</div>
-            <div>Ich mag meine Mitspieler...</div>
-            <div class="indent">überhaupt nicht {{form.q1_how_much_do_you_like_the_other_team_members}} sehr</div>
-        </li>
-        <li class="question">
-            <div class="strong">Wie gut haben Sie verstanden, wie man das Reinigungsproblem lösen kann, so dass alle in der Gruppe möglichst viele Ressourcen ansammeln können?</div>
-            <div>Ich denke, ich habe das Problem bzw. Lösungsmöglichkeiten...</div>
-            <div class="indent">überhaupt nicht {{form.q1_how_good_do_you_understand_solving}} vollkommen verstanden.</div>
-        </li>
-        <li class="question">
-            <div class="strong">Und was denken Sie, wie gut haben die anderen Gruppenmitglieder verstanden, wie man das Reinigungsproblem lösen kann?</div>
-            <div>Ich denke, die anderen Gruppenmitglieder haben das Problem bzw. Lösungsmöglichkeiten…</div>
-            <div class="indent">überhaupt nicht {{form.q1_how_good_do_the_other_group_members_understand_solving}} vollkommen verstanden.</div>
-        </li>
+        <ul class="questions">
+            <li class="question">
+                <div class="strong">Wie beurteilen Sie das Resultat aus dem ersten Spiel?</div>
+                <div>Ich bin…</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q1_first_game_judge_surprised}} völlig überrascht.</li>
+                    <li>überhaupt nicht {{form.q1_first_game_judge_satisfied}} völlig zufrieden.</li>
+                    <li>überhaupt nicht {{form.q1_first_game_judge_upset}} äusserst verärgert.</li>
+                </ul>
+            </li>
+            <li class="question">
+                <div class="strong">Wie stark finden Sie, dass die Gruppenmitglieder im Spiel zusammenarbeiteten?</div>
+                <div>Die Gruppenmitglieder arbeiten…</div>
+                <div class="indent">überhaupt nicht {{form.q1_players_helping_each_other}} vollkommen zusammen.</div>
+            </li>
+            <li class="question">
+                <div class="strong">Inwiefern empfinden Sie eine Art 'Teamgeist' in der Gruppe?</div>
+                <div>Ich empfinde...</div>
+                <div class="indent">überhaupt keinen {{form.q1_team_spirit_or_cohesion}} einen sehr starken Teamgeist.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Wie wichtig ist Ihnen, was die anderen über Sie und Ihr Verhalten denken, also Ihr
+                    Ansehen in der Gruppe?
+                </div>
+                <div class="indent">überhaupt nicht {{form.q1_important_presented_image_of_and_to_yourself}} äusserst
+                    wichtig.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Wie wichtig ist Ihnen, dass alle ihre Ressourcen maximieren können, d.h. die
+                    Resultate fair sind?
+                </div>
+                <div class="indent">überhaupt nicht {{form.q1_important_maximum_and_fair_resources_to_everyone}}
+                    äusserst wichtig.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Wie wichtig ist es Ihnen, dass die anderen Ihrer Gruppe Ihnen vertrauen (können)?
+                </div>
+                <div class="indent">überhaupt nicht {{form.q1_important_other_members_trust_in_you}} äusserst wichtig.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Was denken Sie, wie wichtig ist es den anderen, dass alle ihre Ressourcen maximieren
+                    können, d.h. die Resultate fair sind?
+                </div>
+                <div>Den anderen ist es...</div>
+                <div class="indent">überhaupt nicht {{form.q1_important_not_you_maximum_and_fair_resources_to_everyone}}
+                    äusserst wichtig.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Wie sehr vertrauen Sie den anderen Ihrer Gruppe?</div>
+                <div class="indent">überhaupt nicht {{form.q1_trust_do_you_have_into_other_members}} vollkommen</div>
+            </li>
+            <li class="question">
+                <div class="strong">Alles in allem, wie sehr mögen Sie die Gruppe bzw. die anderen Mitspieler?</div>
+                <div>Ich mag meine Mitspieler...</div>
+                <div class="indent">überhaupt nicht {{form.q1_how_much_do_you_like_the_other_team_members}} sehr</div>
+            </li>
+            <li class="question">
+                <div class="strong">Wie gut haben Sie verstanden, wie man das Reinigungsproblem lösen kann, so dass alle
+                    in der Gruppe möglichst viele Ressourcen ansammeln können?
+                </div>
+                <div>Ich denke, ich habe das Problem bzw. Lösungsmöglichkeiten...</div>
+                <div class="indent">überhaupt nicht {{form.q1_how_good_do_you_understand_solving}} vollkommen
+                    verstanden.
+                </div>
+            </li>
+            <li class="question">
+                <div class="strong">Und was denken Sie, wie gut haben die anderen Gruppenmitglieder verstanden, wie man
+                    das Reinigungsproblem lösen kann?
+                </div>
+                <div>Ich denke, die anderen Gruppenmitglieder haben das Problem bzw. Lösungsmöglichkeiten…</div>
+                <div class="indent">überhaupt nicht {{form.q1_how_good_do_the_other_group_members_understand_solving}}
+                    vollkommen verstanden.
+                </div>
+            </li>
 
-        <li class="question">
-            <div class="strong">{% trans "Explain in a few sentences how to improve the groups behavior to maximize resources." %}</div>
-            <div class="indent">{{form.q1_how_to_improve_the_groups_behavior_to_maximize_resources}}</div>
-        <li class="question">
-            <div class="strong">{% trans "Given the possibility to communicate with the other group members, what would you say and why? What would be your strategy and your personal goal?" %}</div>
-            <div class="indent">{{form.q1_if_communicate_what_would_you_say_and_why}}</div>
-        </li>
-    </ul>
+            <li class="question">
+                <div class="strong">Erläutern Sie in ein paar Sätzen, wie Sie die Gruppe organisieren würden, um die
+                    Ressourcen aller Spieler zu maximieren, wenn Sie die Entscheidungen aller Spieler bestimmen könnten.
+                </div>
+                <div class="indent">{{form.q1_how_to_improve_the_groups_behavior_to_maximize_resources}}</div>
+            <li class="question">
+                <div class="strong">Wenn Sie mit den anderen Gruppenmitgliedern kommunizieren könnten, was würden Sie
+                    diesen mitteilen und warum? Was wäre Ihre 'Kommunikationsstrategie' und was wollten Sie mit der
+                    Kommunikation erreichen?
+                </div>
+                <div class="indent">{{form.q1_if_communicate_what_would_you_say_and_why}}</div>
+            </li>
+        </ul>
     </div>
 </div>
 
