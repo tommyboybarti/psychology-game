@@ -210,9 +210,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    health = models.PositiveIntegerField(min=0, max=Constants.max_health_condition)
-    resources = models.PositiveIntegerField(min=0)
-    resources_overflow = models.PositiveIntegerField(min=0)
+    health = models.FloatField(min=0, max=Constants.max_health_condition)
+    resources = models.FloatField(min=0)
+    resources_overflow = models.FloatField(min=0)
 
     use_toilet = models.BooleanField(widget=widgets.RadioSelectHorizontal())
     small_cleaning = models.BooleanField(widget=widgets.RadioSelectHorizontal())
