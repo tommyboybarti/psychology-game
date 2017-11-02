@@ -40,6 +40,6 @@ class Results(Page):
 
 
 page_sequence = [
-    InitGroup, Choice, ChoiceWaitPage, Results
+    InitGroup, Choice, ChoiceWaitPage
 
 ]
