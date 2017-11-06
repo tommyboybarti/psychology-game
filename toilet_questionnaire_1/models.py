@@ -39,7 +39,7 @@ class Player(BasePlayer):
 
     q1_first_game_judge_surprised = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
     q1_first_game_judge_satisfied = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
-    q1_first_game_judge_upset = models.PositiveIntegerField(min=1, max=5, widget=widgets.SliderInput(show_value=False))
+    q1_first_game_judge_upset = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
 
     q1_players_helping_each_other = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
     q1_team_spirit_or_cohesion = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
