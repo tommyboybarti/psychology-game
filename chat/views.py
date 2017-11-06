@@ -39,12 +39,15 @@ class SmallTalk(Page):
         return 'chat/placebo.html'
 
 
+
+
 class ChatWaitPage(WaitPage):
     pass
 
 
 class Chat(Page):
-    pass
+    timeout_seconds = 300
+
 
 page_sequence = [
     SmallTalk,

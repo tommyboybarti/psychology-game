@@ -2,7 +2,7 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Please Choose - Round {{subsession.round_number}} of {{Constants.num_rounds}}
+    Bitte wählen - Runde {{subsession.round_number}} von {{Constants.num_rounds}}
 {% endblock %}
 
 {% block content %}
@@ -15,19 +15,19 @@
 
 <div class="row lead">
     <div class="col-md-12">
-    {% formfield player.use_toilet with label="Do you want to use the toilet?" %}
+    {% formfield player.use_toilet with label="Wollen Sie die Toilette benutzten" %}
     </div>
 </div>
 
 <div class="row well lead" id="smallCleanRow" style="display:none;">
     <div class="col-md-11 col-md-offset-1">
-    {% formfield player.small_cleaning with label="Do you want to do a small clean?" %}
+    {% formfield player.small_cleaning with label="Wollen Sie einen Kleinputz machen?" %}
     </div>
 </div>
 <hr/>
 <div class="row lead">
     <div class="col-md-12">
-    {% formfield player.big_clean with label="Do you want to take part on the big clean" %}
+    {% formfield player.big_clean with label="Wollen Sie am Grossputz teilnehmen?" %}
     </div>
 </div>
 

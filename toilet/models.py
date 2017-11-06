@@ -33,7 +33,6 @@ class Constants(BaseConstants):
     min_toilet_condition = 0
 
 
-
     # health
     start_value_health = 10
 
