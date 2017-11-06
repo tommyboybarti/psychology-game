@@ -2,46 +2,64 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Kommunikationsinstruktion
+Kommunikationsinstruktion
+{% endblock %}
+
+{% block styles %}
+<style>
+
+    li{
+    margin-top : 20px;
+}
+
+</style>
 {% endblock %}
 
 {% block content %}
-<div class="row lead">
-    hre Gruppe bekommt nun die Möglichkeit für 5 Minuten per schriftlichem Chat zu kommunizieren. Wir bitten Sie, sich nur auf Hochdeutsch auszutauschen.
-    <br>
-    Bitte beachten Sie, dass Spieler disqualifiziert werden, welche sich identifizieren bzw. identifizierbar machen; beleidigende oder diskriminierende Äusserungen anbringen; oder Drohungen äussern, welche sich auf nach dem Experiment beziehen.
-    <br>
-
-Hier noch ein paar Tipps zur Kommunikation:
-    <br>
-    <ul>
-        <li><b>
-            Achten Sie auf einen freundlichen Umgangston und motivieren Sie andere – insbesondere  stillere Spieler –, sich an der Lösungsfindung zu beteiligen.</b></li>
-        </li><br>
-
-
-        <li><b>
-            Versuchen Sie gemeinsam eine Lösung zu erarbeiten und Vorschläge zu erklären, zu diskutieren (z.B. Vor-und Nachteile) und verschiedene Vorschläge zusammenzuführen.</b></li>
-        </li><br>
-
-
-        <li><b>
-            Schweifen Sie nicht vom Thema ab und führen Sie die Diskussion wieder auf den Fokus zurück, wenn andere vom Thema abschweifen.</b></li>
-        </li><br>
-
-
-        <li><b>
-            Achten Sie darauf, dass am Ende konkrete Handlungsempfehlungen hervorgehen, so dass jeder weiss, was er oder sie tun sollen.</b></li>
-        </li>
-
-    </ul>
-</div>
-
-<hr>
 <div class="row">
     <div class="col-md-12">
-        <span class="pull-right">{% next_button %}</span>
-    </div>
-</div>
+        <p>Ihre Gruppe bekommt nun die Möglichkeit für 5 Minuten per schriftlichem Chat zu kommunizieren. Wir bitten
+            Sie, sich nur auf Hochdeutsch auszutauschen.</p>
 
+        <p> Bitte beachten Sie, dass Spieler disqualifiziert werden, welche sich identifizieren bzw. identifizierbar
+            machen; beleidigende oder diskriminierende Äusserungen anbringen; oder Drohungen äussern, welche sich auf
+            nach dem Experiment beziehen.</p>
+
+        <p>Hier noch ein paar Tipps zur Kommunikation:</p>
+        <br>
+        <ul>
+            <li>
+                Achten Sie auf einen freundlichen Umgangston und motivieren Sie andere – insbesondere  stillere Spieler
+                –, sich an der Lösungsfindung zu beteiligen.
+            </li>
+
+
+            <li>
+                Versuchen Sie gemeinsam eine Lösung zu erarbeiten und Vorschläge zu erklären, zu diskutieren (z.B.
+                Vor-und Nachteile) und verschiedene Vorschläge zusammenzuführen.
+            </li>
+
+
+            <li>
+                Schweifen Sie nicht vom Thema ab und führen Sie die Diskussion wieder auf den Fokus zurück, wenn andere
+                vom Thema abschweifen.
+            </li>
+
+
+            <li>
+                Achten Sie darauf, dass am Ende konkrete Handlungsempfehlungen hervorgehen, so dass jeder weiss, was er
+                oder sie tun sollen.
+            </li>
+
+        </ul>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <span class="pull-right">{% next_button %}</span>
+        </div>
+    </div>
+
+</div>
 {% endblock %}
