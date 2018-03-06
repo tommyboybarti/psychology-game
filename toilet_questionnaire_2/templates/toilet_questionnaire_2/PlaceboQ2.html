@@ -1,0 +1,196 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags i18n %}
+
+{% block title %}
+    Fragenbogen 2
+{% endblock %}
+
+{% block content %}
+<style>
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+
+        margin:0 0 50px 0;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul {
+     list-style-type: none;
+    }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+</style>
+<div class="row">
+    <br>
+    <div class="col-md-12">
+        <ul class="questions">
+            <li class="question">
+                <div class="strong">Welche Effekte hatte die Kommunikation auf Sie?</div>
+                <div>Ich bin…</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_communication_surprised}} völlig überrascht.</li>
+                    <li>überhaupt nicht {{form.q2_communication_satisfied}}  völlig zufrieden.</li>
+                    <li>überhaupt nicht {{form.q2_communication_upset}}  äusserst verärgert.</li>
+                </ul>
+            </li>
+            <li class="question">
+                <div class="strong">War es eine faire Diskussion, bei der jeder seine Meinung beitragen konnte?</div>
+                <div>Die Diskussion war...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_fair_discussion}} vollkommen fair.</li>
+
+                </ul>
+            </li>
+            <li class="question">
+                <div class="strong">Hatten Sie Angst  kritisiert zu werden, sobald Sie Ihre Meinung äussern?</div>
+                <div>Ich hatte...</div>
+                <ul>
+                    <li>Überhaupt keine {{form.q2_fear_criticism}} starke Angst kritisiert zu werden.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern ging es bei der Kommunikation nur darum, andere zu beschuldigen und selber Recht zu behalten?</div>
+                <div>Bei der Kommunikation ging es...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_communication_to_be_right}} äusserst stark um Recht zu behalten.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern wurden alle darin bestärkt, ihre Meinung zu äussern inkl. ruhigere Spieler?</div>
+                <div>Alle wurden...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_give_opinion}} äusserst bestärkt ihre Meinung zu äussern.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern wurden die Meinungen aller bei der Lösungsfindung berücksichtigt?</div>
+                <div>Die Meinungen aller wurde...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_others_opinions}} vollkommen berücksichtigt.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern ging es bei der Kommunikation mehr ums Jammern als um Problemlösung?</div>
+                <div>In der Kommunikation ging es...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_communication_whine}} stark ums Jammern.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Wurden Ihre Beiträge von den anderen beachtet?</div>
+                <div>Meine Beiträge wurden...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_inputs_considered}} vollkommen beachtet.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Welcher Spieler dominierte die Diskussion am stärksten?</div>
+                <div>(Falls Sie der Meinung sind, Sie hätten die Diskussion dominiert, kreuzen Sie Ihre Spieler Nummer an. Erinnern Sie sich nicht mehr an diese, kreuzen Sie Ich an.) Ich</div>
+                <br>
+                <div class="no-strong">{{form.q2_best_player}}</div>
+            </li>
+
+            <li class="question">
+                <div class="strong">War die Diskussion fokussiert auf eine Lösungsfindung und effizient bei der Suche?</div>
+                <div>Die Diskussion war...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_communication_focused}} äusserst fokussiert.</li>
+                    <li>Überhaupt nicht {{form.q2_communication_efficient}} äusserst effizient.</li>
+                </ul>
+            </li>
+
+             <li class="question">
+                <div class="strong">Hatten Sie das Gefühl die anderen Gruppenmitglieder waren daran interessiert, eine Lösung zu finden um mehr Ressourcen im Spiel zusammenzutragen?</div>
+                <div>Die Gruppenmitglieder waren...</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_communication_interested_in_solution}} äusserst interessiert.</li>
+                </ul>
+            </li>
+
+             <li class="question">
+                <div class="strong">Hatten Sie das Gefühl die Diskussion war angespannt?</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_discussion_tense}} äusserst angespannt.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Wenn angespannt; Inwiefern war die Diskussion angespannt</div>
+                <br>
+                <div class="indent">{{form.q2_discussion_tense_why}}</div>
+            </li>
+
+             <li class="question">
+                <div class="strong">Wie hilfreich waren die Anweisungen dazu, wie kommuniziert werden sollte, um erfolgreicher eine Lösung zu finden?</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_chat_instructions_helpful}} äusserst hilfreich.</li>
+                </ul>
+            </li>
+
+             <li class="question">
+                <div class="strong">Wie stark haben Sie sich an die Anweisungen dazu, wie kommuniziert werden sollte, gehalten?</div>
+                <ul>
+                    <li>Überhaupt nicht {{form.q2_chat_instructions_followed}} äusserst daran gehalten.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Gab es in Ihrer Gruppe Personen, welche sich sehr negativ auf die Kommunikation auswirkten, z.B. indem Sie die Stimmung verschlechterten oder den Lösungsfindungsprozess störten?</div>
+                <br>
+                <div class="no-strong">{{form.q2_was_there_negative_participant}}</div>
+                <div class="strong">Wenn ja, welcher Spieler?</div>
+                <div class="no-strong">{{form.q2_negative_participant}}</div>
+                <div>{{ form.q2_negative_participant.errors }}</div>
+
+            </li>
+
+            <li class="question">
+                <div class="strong">Gab es in Ihrer Gruppe Personen, welche sich sehr positiv auf die Kommunikation auswirkten, z.B. indem Sie die Stimmung verbesserten oder positiv zum Lösungsfindungsprozess beitrugen?</div>
+                <br>
+                <div class="no-strong">{{form.q2_was_there_positive_participant}}</div>
+                <div class="strong">Wenn ja, welcher Spieler?</div>
+                <div class="no-strong">{{form.q2_positive_participant}}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}

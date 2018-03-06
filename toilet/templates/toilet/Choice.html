@@ -1,0 +1,67 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bitte wählen - Runde {{subsession.round_number}} von {{Constants.num_rounds}}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="pull-right" style="text-align:right">
+        <p class="text-center"><strong>Status</strong></p>
+        {% include "toilet/includes/lifebar.html" %}
+    </div>
+</div>
+
+<div class="row lead">
+    <div class="col-md-12">
+    {% formfield player.use_toilet with label="Wollen Sie die Toilette benutzten" %}
+    </div>
+</div>
+
+<div class="row well lead" id="smallCleanRow" style="display:none;">
+    <div class="col-md-11 col-md-offset-1">
+    {% formfield player.small_cleaning with label="Wollen Sie einen Kleinputz machen?" %}
+    </div>
+</div>
+<hr/>
+<div class="row lead">
+    <div class="col-md-12">
+    {% formfield player.big_clean with label="Wollen Sie am Grossputz teilnehmen?" %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+    $('input[name=small_cleaning]').prop('required', false);
+
+    $("input[name=use_toilet][value=True]").click(function(){
+       $('input[name=small_cleaning]').prop('required', true);
+       $("#smallCleanRow").show("fast");
+    });
+    $("input[name=use_toilet][value=False]").click(function(){
+       $('input[name=small_cleaning]').prop('required', false);
+       $("#smallCleanRow").hide("fast", function(){
+            $('input[name=small_cleaning]').prop('checked', false);
+        });
+    });
+
+    $("form#form").submit(function(){
+        $("#smallCleanRow").hide("fast", function(){
+            var use_toilet = $('input[name=use_toilet]:checked').val() == "True";
+            if(!use_toilet){
+                $('input[name=small_cleaning][value=False]').prop('checked', true);
+            }
+        });
+    })
+});
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+<table class="table table-condensed table-hover">
+    <tr>
+        <th class="text-info">
+            Toilet Status <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+        </th>
+        <td>{{group.toilet}}/{{Constants.max_toilet}}</td>
+    </tr>
+    <tr>
+        <th class="text-danger">
+            Health <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+        </th>
+        <td>{{player.health}}/{{Constants.max_health}}</td>
+    </tr>
+    <tr>
+        <th class="text-success">
+            Resources <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+        </th>
+        <td>{{player.resources}}</td>
+    </tr>
+
+</table>

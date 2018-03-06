@@ -1,0 +1,205 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags i18n %}
+
+{% block title %}
+Fragebogen 2 für Konfident
+{% endblock %}
+
+{% block content %}
+<style>
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+
+        margin:0 0 50px 0;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul {
+     list-style-type: none;
+    }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+
+</style>
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="questions">
+            <br>
+            <div>Vielen Dank, dass Sie die Rolle des Konfident übernommen haben. Wir haben nun noch einige Fragen dazu,
+                wie Sie die Kommunikation aus dieser Perspektive erlebt haben.
+            </div>
+            <br>
+            <li class="question">
+                <div class="strong">Inwiefern finden Sie, dass Sie den Anweisungen zu Ihrer Rolle als Konfident folgen
+                    konnten bzw. gefolgt sind?
+                </div>
+                <div>Ich habe die Anweisungen zu meiner Rolle als Konfident...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_confidant_followed_chat_intstructions}} vollkommen umgesetzt / umsetzen können.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Wie schwierig fanden Sie es, die Anweisungen zu Ihrer Rolle als Konfident
+                    umzusetzen, z.B. wegen der Reaktionen der anderen Gruppenmitglieder?
+                </div>
+                <div>Die Anweisungen meiner Rolle als Konfident umzusetzen war...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_confidant_difficulty_chat_instructions}} extrem schwierig.</li>
+
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Wenn Schwierigkeiten auftraten, beschreiben Sie kurz die Probleme bei der Umsetzung der
+                    Anleitungen Ihrer Rolle.
+                </div>
+                <br>
+                <div class="indent">{{form.q2_confidant_problems_chat_instructions}}</div>
+            </li>
+
+            <li class="question">
+                <div class="strong">Haben Sie das Gefühl, die anderen Gruppenmitglieder haben Verdacht geschöpft, dass
+                    Sie ein Konfident sein könnten?
+                </div>
+                <div>Ich denke, die anderen Gruppenmitglieder haben...</div>
+                <ul>
+                    <li>sicher nicht {{form.q2_confidant_others_found_out_confidant}} ganz sicher gemerkt, dass ich
+                        Konfident war
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Warum vermuten Sie, dass die anderen Gruppenmitglieder Sie als Konfident entlarvt
+                    haben bzw. sie unerkannt blieben?
+                </div>
+                <br>
+                <div class="indent">{{form.q2_confidant_others_found_out_confidant_why}}</div>
+            </li>
+
+            <li class="question">
+                <div class="strong">Inwiefern hat es Sie gestört oder gefreut, dass Sie zufällig die Rolle des Konfident
+                    zugewiesen bekommen haben?
+                </div>
+                <ul>
+                    <li>sehr gestört {{form.q2_confidant_pleased_about_being_chosen}} sehr gefreut.</li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Hätten Sie im Voraus gewusst, dass Sie das Experiment als Konfident durchführen,
+                    hätten Sie dann auch am Experiment mitgemacht?
+                </div>
+                <div>Ich hätte...</div>
+                <ul>
+                    <li>sicher nicht {{form.q2_confidant_would_have_participated_if_knew}} sicher trotzdem mitgemacht.
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Wenn Sie uns etwas zum Ablauf der Konversation, Ihre Rolle oder die Instruktionen,
+                    denen Sie folgen sollten, sagen wollen, können Sie das folgende Feld verwenden.
+                </div>
+                <br>
+                <div class="indent">{{form.q2_confidant_comments_in_general}}</div>
+            </li>
+
+            <br>
+            <div>Nun haben wir noch ein paar Fragen zur Kommunikation selber.</div>
+            <br>
+
+            <li class="question">
+                <div class="strong">Was denken Sie, wie stark wurde die Kommunikation der Gruppe durch Ihre Beiträge
+                    beeinflusst?
+                </div>
+                <div>Die Kommunikation der anderen Gruppenmitglieder wurde...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_confidant_influence_inputs}} sehr stark von meinen Beiträgen
+                        beeinflusst.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">Würden Sie sagen, die anderen Gruppenmitglieder haben versucht, Ihre Beiträge zu
+                    ignorieren oder davon abzulenken?
+                </div>
+                <div>Die anderen Gruppenmitglieder versuchten...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.q2_confidant_inputs_being_ignored_others}} vollkommen meine Beiträge zu
+                        ignorieren / davon abzulenken.
+                    </li>
+                </ul>
+            </li>
+
+            <li class="question">
+                <div class="strong">In welcher Form wurde darüber gesprochen, wie beim Reinigen vorzugehen ist?</div>
+                <div>Wählen Sie bitte <b>eine</b> der folgenden Antwortoptionen aus:</div>
+                <br>
+                <div class="no-strong">{{form.q2_confidant_cleaning_how_to_proceed}}</div>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Bitte beschreiben Sie, wie die (ev. vagen) Handlungsempfehlungen aussehen. Wie
+                    müssten Sie und die anderen Gruppenmitglieder sich verhalten, um diesen zu folgen? Was wären die
+                    Konsequenzen, wenn sich jemand nicht daran hält?
+                </div>
+                <br>
+                <div class="indent">{{form.q2_confidant_how_to_realize_recommendations}}</div>
+            </li>
+            <br>
+
+            <li class="question">
+                <div class="strong">Spielinstruktion</div>
+                <div>Spielen Sie im zweiten Spiel nach den Strategien auf welche sich Ihre Gruppe geeinigt hat. Ziehen
+                    Sie diese Strategie durch, auch wenn sich andere Spieler nicht daran halten.
+                    Falls Ihre Gruppe sich nicht oder nicht klar und auf eine Strategie geeinigt hat, versuchen Sie der
+                    Strategie zu folgen, welche Ihnen am ehesten der Strategie der Gruppe erscheint.
+                    Bei Unklarheit spielen Sie so, wie Sie ohne diese Instruktionen gespielt hätten, aber ohne die
+                    anderen Auszunutzen. D.h.: Nutzen Sie stets die Toilette, machen Sie einen kleinen Putz und hin und
+                    wieder einen Grossputz.
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}

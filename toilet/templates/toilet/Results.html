@@ -1,0 +1,45 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+     Results - Round {{subsession.round_number}} of {{Constants.num_rounds}}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <p class="well lead">
+        <strong class="text-info">Toilet Status <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>:</strong>
+        <strong>{{group.toilet}}/{{Constants.max_toilet}}</strong>
+    </p>
+
+
+    <table class="table lead">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th class="text-danger">Health <span class="glyphicon glyphicon-heart" aria-hidden="true"></th>
+                <th class="text-success">Resources <span class="glyphicon glyphicon-usd" aria-hidden="true"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ply in group.get_players %}
+            <tr {% if player == ply %}class="text-info"{% endif %}>
+                <th>Player {{ply.id_in_group}}</th>
+                <td>{{ply.health}}/{{Constants.max_health}}</td>
+                <td>{{ply.resources}}</td>
+                <td>{% if player == ply %}YOU{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+{% endblock %}
+
+
