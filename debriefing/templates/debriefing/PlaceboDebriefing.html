@@ -1,0 +1,146 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags i18n %}
+
+{% block title %}
+Debriefing
+{% endblock %}
+
+{% block styles %}
+<style>
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+        margin-bottom: 40px;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul.questions div.small-tarea textarea {
+        height: 50px;
+    }
+
+    ul {
+     list-style-type: none;
+    }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <br>
+    <div class="col-md-12">
+        <ul class="questions">
+            <div>
+                Wir wollen mit diesem Experiment untersuchen, wie sich positive und negative Kommunikation auf
+                Gruppenresultate
+                auswirkt. Es gab vier Experimentalgruppen: In einer Experimentalgruppe wurde allen Gruppenmitgliedern
+                Anweisungen dazu gegeben, wie erfolgreich (also positiv) kommuniziert werden kann und die Personen
+                wurden
+                angehalten, so zu kommunizieren. In zwei anderen Experimentalgruppen wurde in jeder Spielergruppe
+                jeweils eine/r
+                der Spieler/innen zufällig ausgewählt, um, im Sinne eines Konfident, gemäss Anweisungen der
+                Versuchsleiterin zu
+                handeln. In einer Experimenalgruppe waren diese Anweisungen so angelegt, dass die Kommunikation positiv
+                und in
+                der anderen, dass diese negativ beeinflusst wird. Schliesslich gab es noch eine Kontrollgruppe ohne
+                Anweisungen
+                und ohne Konfidenten.
+            </div>
+            <br>
+
+            <li class="question">
+                <div class="strong">Was denken Sie, in welcher der vier genannten Experimentalgruppen waren Sie
+                    zugeteilt?
+                </div>
+                <br>
+                <div class="no-strong">{{form.debriefing_guess_which_group}}</div>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Inwiefern dachten Sie schon während der Kommunikation, dass einer der Spieler
+                    irgendwie 'unnatürlich' kommuniziert, also ein Konfident sein könnte?
+                </div>
+                <div>Ich war mir...</div>
+                <ul>
+                    <li>überhaupt nicht {{form.debriefing_sure_about_confidant_in_group}} sehr sicher, dass einer ein
+                        Konfident ist.
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Was denken Sie, welche/r Spieler/in war Konfident?</div>
+                <br>
+                <div class="no-strong">{{form.debriefing_who_was_confidant}}</div>
+            </li>
+
+
+            <li class="question">
+                <div class="strong">Was liess Sie vermuten, dass die von Ihnen identifizierte Person ein Konfident
+                    ist?
+                </div>
+                <div class="indent">{{form.what_made_you_assume_confidant}}</div>
+            </li>
+
+            <li class="question">
+                <div class="strong">Beachten Sie bitte noch Folgendes:</div>
+                <br>
+                <div>Die Zuteilung auf die Gruppen und innerhalb der Gruppe auf die Rolle von Konfidenten war zufällig
+                    und anonym. Wir wissen nicht, welcher Gruppe Sie zugeordnet waren und wer Konfident war. Es ist uns
+                    bewusst, dass je nach Gruppe die Bedingungen zur Erreichung guter Resultate unterschiedlich sind.
+                    Daher werden für den Gewinn aus jeder Experimentalgruppe die gleiche Anzahl Spieler mit den besten
+                    Resultaten in dieser Gruppe ausgewählt. Ebenso werden die besten 5 Konfidenten aufgrund des
+                    Einhaltens ihres Skripts in der Kommunikation, der Gruppenstrategie im zweiten Spiel und der
+                    Beurteilung der Kommunikation durch die anderen Mitglieder für eine Belohnung ausgewählt.
+                    Da dieses Experiment noch mit anderen Personen durchgeführt wird, bitten wir Sie um Stillschweigen
+                    über Struktur und Ziele des Experiments. Was Sie auf dieser Seite gerade gelesen haben, sollten Sie
+                    anderen Personen also nicht weitererzählen
+                </div>
+            </li>
+
+            <li class="question">
+                <div class="strong">Im Folgenden können Sie uns noch Kommentare zum Experiment mitteilen. Insbesondere
+                    würde uns interessieren, was Sie gut fanden oder Sie störte bzw. Sie finden, geändert werden sollte.
+                </div>
+                <div class="indent">{{form.debriefing_feedback}}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}

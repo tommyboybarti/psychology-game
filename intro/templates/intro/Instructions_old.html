@@ -1,0 +1,206 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+Problemstellung
+{% endblock %}
+
+{% block styles %}
+<style>
+    ul.questions input.form-control {
+        display: inline;
+        margin: 3px;
+    }
+
+    ul.questions div.strong {
+        font-weight: bold;
+    }
+
+    ul.questions div.no-strong *{
+        font-weight: normal;
+    }
+
+    ul.questions li.question {
+        margin-bottom: 40px;
+    }
+
+    ul.questions .indent {
+        margin-left: 40px;
+    }
+
+    ul.questions textarea {
+        width: 100%;
+        max-width: 100%;
+        resize: none;
+    }
+
+    ul.questions div.small-tarea textarea {
+        height: 50px;
+    }
+
+    ul {
+     list-style-type: none;
+    }
+
+    .indent {
+
+      margin-top : 15px;
+    }
+
+    .strong {
+        font-weight: bold;
+        margin-bottom : 10px;
+    }
+
+
+    h3 {
+        margin-bottom : 20px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="strong">Hintergrund</div>
+
+        <div>
+            <p>Jeder kennt die Probleme, welche mit gemeinsam genutzten Objekten einhergehen. Sei es die gemeinsame
+                Waschküche oder die WG-Küche, oft hapert es damit, diese in einem ordentlichen Zustand zu halten. Diese
+                kleinen Ärgernisse können sich aber zu lebensbedrohlichen Problemen entwickeln, wenn dadurch die Hygiene
+                ernsthaft bedroht wird.
+            </p>
+            <p>In Entwicklungsländern müssen sich die meisten Haushalte Toiletten teilen – sofern sie überhaupt
+                Zugang
+                zu solchen haben. Da es auch hier mit dem Unterhalt hapert, verdrecken diese oft und werden zu
+                Krankheitsherden. Oft wollen die Personen diese dann auch gar nicht mehr benutzen und greifen zu
+                noch
+                gefährlicheren Methoden zurück wie z.B. sich in der Strasse zu erleichtern oder Exkremente dort zu
+                entsorgen.</p>
+
+            <p>Das vorliegende Experiment modelliert genau diese Situation in abstrakter Form. Sie werden nun in
+                die
+                Haut der eben beschriebenen Personen schlüpfen und eine Zeit lang deren Entscheidungen fällen,
+                welche
+                sich um Nutzung und Reinigung einer gemeinsam genutzten Toilette drehen.</p>
+        </div>
+        <br>
+        <div class="strong">Aufgabe</div>
+        <div>
+            <p>Sie und vier andere Personen entscheiden für einige Wochen wo Sie defäkieren und wie Sie die
+                Toilette sauber halten. Ihr Verhalten und das der anderen Personen Ihrer Gruppe zusammen bestimmen
+                den Zustand der Toilette, welcher sich auf die Gesundheit auswirkt, welche wiederum Ihr Einkommen
+                bestimmt. Das Ziel des Spieles ist es, möglichst viele Ressourcen anzusammeln, wobei ein Teil der
+                Ressourcen auch für das Sauberhalten der Toilette benötigt wird.</p>
+
+            <p>Also, finden Sie die Strategie, welche es Ihnen ermöglicht, möglichst viele Ressourcen anzusammeln.</p>
+            <p>Als Anreiz, diesem Ziel zu folgen, werden jedem der 20 Spieler, welche im zweiten Spiel am meisten
+                Ressourcen zusammentragen, 40.- Fr. ausgezahlt.</p>
+
+        </div>
+        <br>
+
+        <h3>Systembeschreibung</h3>
+        <div class="strong">Verhaltensoptionen:</div>
+        <div>
+            <p>Toilette benutzen oder nicht: Nicht-Benutzung reduziert Gesundheit aller um 1; Benutzung
+                verschmutzt Toilette (Toilettenzustand –1).</p>
+
+            <p>Wenn Toilette benutzt wird → kleines Putzen oder nicht: Kleines Putzen verlangsamt Verschmutzung der
+                Toilette (Toilettenzustand –0.5 statt –1) kostet aber Ressourcen (–1).</p>
+
+            <p>Unabhängig davon: Sich an Grossputz beteiligen: Macht Toilette sauber, ist aber teuer (siehe
+                später).</p>
+
+        </div>
+        <br>
+
+        <div class="strong">Toiletten-Zustand:</div>
+        <div>
+            <p>Reicht von 0 = total verschmutzt bis 12 = vollkommen sauber. Startwert = 4 (die Toilette ist
+                kritisch verschmutzt)</p>
+
+            <p>Verschlechtert sich durch jede Benutzung, allerdings nur halb so schnell mit kleinem Putzen
+                (Toilettenzustand –1 bzw. –0.5).</p>
+
+            <p>Durch einen gelungenen Grossputz wird die Toilette vollständig gereinigt.</p>
+
+        </div>
+        <br>
+
+        <div class="strong">Gesundheitszustand:</div>
+        <div>
+            <p>Reicht von 0 = äusserst krank bis 12 = vollkommen gesund; Startet mit 12 und steigt in jeder Runde
+                um 1 bis der Maximalwert erreicht ist.</p>
+
+            <p>Wird reduziert um 1 durch jede Person die Toilette nicht benutzt.</p>
+
+            <p>Wird umso stärker reduziert, je verschmutzter die Toilette ist, sofern die Toilette benutzt wird. Bei
+                total verschmutzter Toilette (Toilettenzustand = 0) reduziert sich die Gesundheit durch
+                Toilettenbenutzung um 2, bei einer mittelmässig verschmutzten Toilette (Toilettenzustand = 6) um 1,
+                etc.</p>
+        </div>
+        <br>
+
+        <div class="strong">Ressourcenentwicklung:</div>
+        <div>
+            <p>Startet bei 9, kann bis 0 absinken und unendlich steigen.</p>
+
+            <p>Ressourcen steigen jede Runde, in Abhängigkeit von der Gesundheit. Bei perfekter Gesundheit
+                (Gesundheitszustand = 12) kommen in jeder Runde 2 Ressourcen hinzu, ist man äusserst krank
+                (Gesundheitszustand = 0) kommen keine Ressourcen hinzu, da man nicht mehr arbeiten kann, und zwischen
+                diesen Extremen ist der Ressourcengewinn proportional zur Gesundheit</p>
+
+            <p>Reduziert sich um 1 durch kleines Putzen beim Toilettenbenutzen.
+                Reduziert sich stark, wenn Grossputz gemacht wird (siehe unten).</p>
+
+        </div>
+        <br>
+        <div class="strong">Grossputz:</div>
+        <div>
+            <p>Für einen Grossputz muss Zeit freigehalten und Material bereitgestellt werden bzw. jemand muss fürs
+                Putzen bezahlt werden, unabhängig davon, wie verschmutzt die Toilette ist. Daher kostet das Putzen immer
+                gleich viel (12 Ressourcen).</p>
+            <p>Die Kosten verteilen sich gleichmässig auf alle Personen, welche sich in einer Runde am Grossputz
+                beteiligen. Machen z.B. zwei mit, so bezahlen diese jeweils 6 Einheiten unabhängig davon, über wie viele
+                Ressourcen diese verfügen.</p>
+            <p>Beteiligen sich Personen am Grossputz, welche nicht über genügend Ressourcen verfügen, wird die Toilette
+                nicht ganz sauber. Machen z.B. 2 Personen einen Grossputz, aber eine verfügt nur über 3
+                Ressourceneinheiten, so wird nur (3 + 6) / 12 = 0.75 der benötigten Reinigung durchgeführt. War der
+                Toilettenzustand z.B. 4, so steigt der Toilettenzustand um (12 – 4) * 0.75 = 6 auf den neuen Zustand von
+                10. Verfügen alle am Grossputz beteiligten Personen über genügend Ressourcen, wird die Toilette immer
+                ganz sauber.</p>
+
+        </div>
+
+
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <span class="pull-right">{% next_button %}</span>
+    </div>
+</div>
+
+{% endblock %}
