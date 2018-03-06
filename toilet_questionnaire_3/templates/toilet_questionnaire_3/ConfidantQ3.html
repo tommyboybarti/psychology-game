@@ -7,6 +7,8 @@ Fragenbogen 3 für Konfident
 
 
 {% block scripts %}
+
+<!--
 <script src="{% static 'global/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js' %}"></script>
 <script>
     //~ $(document).ready(function(){
@@ -29,6 +31,8 @@ Fragenbogen 3 für Konfident
 
 
 </script>
+
+-->
 {% endblock %}
 
 {% block styles %}
@@ -149,13 +153,13 @@ Fragenbogen 3 für Konfident
                     <div class="indent">{{form.q3_confidant_gender}}</div>
                 </li>
                 <li class="question">
-                    <div class="strong">Geburtstag:</div>
-                    <div class="indent input-group">
-                        {{form.q3_confidant_birthday}}
-                        <span class="btn input-group-addon">
+                    <div class="strong">Geburtsjahr:</div>
+                    <!-- <div class="indent input-group"> -->
+                        <div class="indent small-tared">{{form.q3_confidant_birthday}}</div>
+                <!-- <span class="btn input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-                    </div>
+                -->
                 </li>
                 <li class="question">
                     <div class="strong">Hauptfach:</div>

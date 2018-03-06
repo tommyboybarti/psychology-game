@@ -23,7 +23,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'toilet2'
     players_per_group = None
-    num_rounds = 25
+    num_rounds = 2
     available_group_sizes = (3, 4, 5)
 
     # toilet

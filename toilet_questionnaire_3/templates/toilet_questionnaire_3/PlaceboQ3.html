@@ -7,6 +7,8 @@ Fragenbogen 3
 
 
 {% block scripts %}
+
+<!--
 <script src="{% static 'global/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js' %}"></script>
 <script>
     //~ $(document).ready(function(){
@@ -28,6 +30,9 @@ Fragenbogen 3
 
 
 </script>
+
+-->
+
 {% endblock %}
 
 {% block styles %}
@@ -211,13 +216,12 @@ Fragenbogen 3
                     <div class="indent">{{form.q3_gender}}</div>
                 </li>
                 <li class="question">
-                    <div class="strong">Geburtstag:</div>
-                    <div class="indent input-group">
-                        {{form.q3_birthday}}
-                        <span class="btn input-group-addon">
+                    <div class="strong">Geburtsjahr:</div>
+                    <!-- <div class="indent input-group"> -->
+                    <div class="indent small tarea">{{form.q3_birthday}}</div>
+                    <!-- <span class="btn input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                    </div>
+                </span> -->
                 </li>
                 <li class="question">
                     <div class="strong">Hauptfach:</div>

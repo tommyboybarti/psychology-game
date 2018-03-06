@@ -69,7 +69,7 @@ class Player(BasePlayer):
     q3_second_round_impressions = models.TextField()
     q3_best_strategy_to_max_resources = models.TextField()
     q3_gender = models.CharField(choices=["M", "F"], widget=widgets.RadioSelectHorizontal())
-    q3_birthday = models.DateField(widget=widgets.Input())
+    q3_birthday = models.CharField(max_length=4, default='XXXX')  #  q3_birthday = models.DateField(widget=widgets.Input()
     q3_main_subject_in_university = models.TextField()
     q3_already_take_part_in_a_problem_solving = models.CharField(max_length=255, widget=widgets.RadioSelect(),
                                                                  choices=['Ja', 'Nein'])
@@ -110,7 +110,7 @@ class Player(BasePlayer):
                                                                                                 show_value=False))
     q3_confidant_best_strategy_to_max_resources = models.TextField()
     q3_confidant_gender = models.CharField(choices=["M", "F"], widget=widgets.RadioSelectHorizontal())
-    q3_confidant_birthday = models.DateField(widget=widgets.Input())
+    q3_confidant_birthday = models.TextField(default='Jahrgang') #  q3_confidant_birthday = models.DateField(widget=widgets.Input())
     q3_confidant_main_subject_in_university = models.TextField()
     q3_confidant_already_take_part_in_a_problem_solving = models.CharField(max_length=255, widget=widgets.RadioSelect(),
                                                                            choices=['Ja', 'Nein'])
