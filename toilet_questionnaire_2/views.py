@@ -32,7 +32,8 @@ class PlaceboQ2(Page):
         'q2_was_there_negative_participant',
         'q2_negative_participant',
         'q2_was_there_positive_participant',
-        'q2_positive_participant'
+        'q2_positive_participant',
+        'q2_describe_actions'
     ]
 
     def q2_best_player_choices(self):

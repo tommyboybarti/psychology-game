@@ -81,6 +81,7 @@ class Player(BasePlayer):
     q2_was_there_positive_participant = models.CharField(max_length=255,
                                                          widget=widgets.RadioSelect(), choices=['Ja', 'Nein'])
     q2_positive_participant = models.TextField(default='Fügen Sie hier die Spielernamen hinzu.')
+    q2_describe_actions = models.TextField()
 
     # confidant
     q2_confidant_followed_chat_intstructions = models.PositiveIntegerField(min=1, max=10, widget=widgets.SliderInput(show_value=False))
